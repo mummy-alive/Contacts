@@ -50,6 +50,14 @@ fun TabScreen(modifier: Modifier = Modifier) {
     }
 }
 
+@Preview(showBackground = true, widthDp = 320, heightDp = 200)
+@Composable
+fun ContactPreview(){
+    Week1Theme {
+        ContactsScreen()
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
