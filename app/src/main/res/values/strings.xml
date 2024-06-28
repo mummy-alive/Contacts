@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">week1</string>
+    <string name="photo_name_1">불국사</string>
+    <string name="photo_name_2">에펠탑</string>
+    <string name="photo_name_3">만리장성</string>
+    <string name="photo_name_4">피라미드</string>
+    <string name="photo_name_5">스핑크스</string>
 </resources>
