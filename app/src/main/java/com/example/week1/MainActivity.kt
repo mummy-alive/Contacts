@@ -59,7 +59,8 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TabScreen(modifier: Modifier = Modifier) {
+fun TabScreen(modifier: Modifier = Modifier,
+              peopleList: List<PERSON>) {
     var tabIndex by rememberSaveable { mutableIntStateOf(0) }
     val tabs = listOf("Contacts", "Photo", "Third")
 
