@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -58,10 +59,10 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TabScreen(modifier: Modifier = Modifier,
-                peopleList: List<PERSON>) {
-    var tabIndex by remember { mutableIntStateOf(0) }
-    val tabs = listOf("Contacts", "Photo", "Music")
+fun TabScreen(modifier: Modifier = Modifier) {
+    var tabIndex by rememberSaveable { mutableIntStateOf(0) }
+    val tabs = listOf("Contacts", "Photo", "Third")
+
     Column(modifier = modifier.fillMaxWidth()) {
         TabRow(selectedTabIndex = tabIndex) {
             tabs.forEachIndexed { index, title ->
