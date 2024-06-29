@@ -67,7 +67,7 @@ fun PhotoScreen(
                     photo = photo,
                     modifier = Modifier
                         .clickable { selectedImageId = photo.imageResourceId },
-                    )
+                )
             }
         }
     }
