@@ -15,7 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.week1.ui.theme.Week1Theme
 
 data class Photo(
     @DrawableRes val imageResourceId: Int,
@@ -62,4 +64,10 @@ fun DrawPhoto(
     )
 }
 
-
+@Preview(showBackground = true)
+@Composable
+fun PhotoPreview() {
+    Week1Theme {
+        PhotoScreen()
+    }
+}
