@@ -93,7 +93,7 @@ fun ContactPreview(){
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun TabPreview() {
     Week1Theme {
         TabScreen(peopleList = listOf(
             PERSON(name = "John Doe", tel = "010-8188-2222"),
