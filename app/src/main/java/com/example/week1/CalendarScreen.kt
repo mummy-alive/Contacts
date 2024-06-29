@@ -15,12 +15,17 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
+
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,37 +36,40 @@ import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
 
+
 @Composable
 fun CalendarScreen(modifier: Modifier = Modifier) {
 
-    CalendarView(modifier,
-        /*currentMonth = currentMonth,
-        currentYear = currentYear,
-        onNextMonth = { nextMonth() },
-        onPrevMonth = { prevMonth() }*/
-        )
+    CalendarView(modifier)
 }
 
 @Composable
 fun CalendarView(
     modifier: Modifier,
-    /*ToDo: Add Calendar Moving button*/
-    /*    currentMonth: Int,
-        currentYear: Int,
-        onNextMonth: () -> Unit,
-        onPrevMonth: () -> Unit*/
 ) {
-    val date: LocalDate = LocalDate.now()
+    val currentDate: LocalDate = LocalDate.now()
     val dowArray: List<String> = listOf("일", "월", "화", "수", "목", "금", "토")
-    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.KOREA)
-    val formattedDate = date.format(formatter)
 
-    val yearState by remember { mutableStateOf(formattedDate.split('-').first()) }
-    val monthState by remember { mutableStateOf(formattedDate.split('-')[1]) }
-    val dayState by remember { mutableStateOf(formattedDate.split('-').last()) }
+    var yearState by remember { mutableIntStateOf(currentDate.year) }
+    var monthState by remember { mutableIntStateOf(currentDate.monthValue) }
+    var dayState by remember { mutableIntStateOf(currentDate.dayOfMonth) }
 
-    /*ToDo: Add Calendar Moving button*/
-    /*Box(
+    fun monthIncrement(){
+        if (monthState == 12) {
+            monthState = 1
+            yearState += 1
+        } else
+            monthState += 1
+    }
+    fun monthDecrement(){
+        if(monthState == 1){
+            monthState = 12
+            yearState -= 1
+        } else
+            monthState -= 1
+    }
+
+    Box(
         modifier = Modifier
             .background(Color.Unspecified)
             .padding(4.dp)
@@ -69,13 +77,22 @@ fun CalendarView(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp),
-            horizontalArrangement = Arrangement.End
+                .padding(vertical = 16.dp)
         ) {
-            LastMonthButton(onPrevMonth)
-            NextMonthButton(onNextMonth)
+            IconButton(onClick = { monthDecrement() }) {
+                Text("<<")
+            }
+            Text( //This is where we show month and year
+                text = "${yearState}년 ${monthState}월",
+                modifier = modifier
+                    .padding(top = 16.dp),
+                textAlign = TextAlign.Center
+            )
+            IconButton(onClick = { monthDecrement() }) {
+                Text(">>")
+            }
         }
-    }*/
+    }
     Box(
         modifier = Modifier
             .size(700.dp)
@@ -83,33 +100,15 @@ fun CalendarView(
             .padding(4.dp)
     ) {
         LazyVerticalGrid(
-            modifier = Modifier.fillMaxSize(),
-            columns = GridCells.Fixed(7)
+            modifier = Modifier.fillMaxSize(), columns = GridCells.Fixed(7)
         ) {
             items(7) { dow ->
                 DowBox(dowArray[dow], modifier)
-
             }
             items(40) { day ->
                 CalendarBox(day, modifier)
             }
         }
-    }
-}
-
-/*ToDo: Add Calendar Moving button*/
-@Composable
-fun LastMonthButton(onClick: () -> Unit) {
-    IconButton(onClick = onClick){
-        Text("<")
-    }
-}
-
-/*ToDo: Add Calendar Moving button*/
-@Composable
-fun NextMonthButton(onClick: () -> Unit) {
-    IconButton(onClick = onClick){
-        Text(">")
     }
 }
 
@@ -156,17 +155,13 @@ fun CalendarBox(day: Int, modifier: Modifier) {
                 modifier = Modifier.fillMaxSize()
             ) {
                 Text(
-                    text = day.toString(),
-                    Modifier
-                        .align(Alignment.Start),
+                    text = day.toString(), Modifier.align(Alignment.Start),
                     //.padding(start = 2.dp, top = 2.dp),
                     fontSize = 8.sp
                 )
                 Spacer(modifier = Modifier.size(10.dp))
                 Text(
-                    text = "오운완\uD83D\uDD25",
-                    Modifier
-                        .align(Alignment.CenterHorizontally),
+                    text = "오운완\uD83D\uDD25", Modifier.align(Alignment.CenterHorizontally),
                     //.padding(bottom = 4.dp),
                     fontSize = 6.sp
                 )

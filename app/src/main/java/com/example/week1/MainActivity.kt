@@ -61,8 +61,10 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TabScreen(modifier: Modifier = Modifier,
-              peopleList: List<PERSON>) {
+fun TabScreen(
+    modifier: Modifier = Modifier,
+    peopleList: List<PERSON>
+) {
     var tabIndex by rememberSaveable { mutableIntStateOf(0) }
     val tabs = listOf("Contacts", "Photo", "Calendar")
 
@@ -85,12 +87,14 @@ fun TabScreen(modifier: Modifier = Modifier,
 
 @Preview(showBackground = true, widthDp = 320, heightDp = 200)
 @Composable
-fun ContactPreview(){
+fun ContactPreview() {
     Week1Theme {
-        ContactsScreen( peopleList = listOf(
-            PERSON(name = "John Doe", tel = "010-8188-2222"),
-            PERSON(name = "Amy Pearson", tel = "010-9999-4444")
-        ))
+        ContactsScreen(
+            peopleList = listOf(
+                PERSON(name = "John Doe", tel = "010-8188-2222"),
+                PERSON(name = "Amy Pearson", tel = "010-9999-4444")
+            )
+        )
     }
 }
 
@@ -98,16 +102,18 @@ fun ContactPreview(){
 @Composable
 fun GreetingPreview() {
     Week1Theme {
-        TabScreen(peopleList = listOf(
-            PERSON(name = "John Doe", tel = "010-8188-2222"),
-            PERSON(name = "Amy Pearson", tel = "010-9999-4444")
-        ))
+        TabScreen(
+            peopleList = listOf(
+                PERSON(name = "John Doe", tel = "010-8188-2222"),
+                PERSON(name = "Amy Pearson", tel = "010-9999-4444")
+            )
+        )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun CalendarPreview(){
+fun CalendarPreview() {
     Week1Theme {
         CalendarScreen()
     }
