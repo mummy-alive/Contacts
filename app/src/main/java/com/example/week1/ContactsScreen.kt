@@ -18,7 +18,7 @@ fun ContactsScreen(
     modifier: Modifier = Modifier,
     peopleList: List<PERSON>
 ) {
-    LazyColumn(modifier = modifier.padding(vertical = 4.dp)){
+ LazyColumn(modifier = modifier.padding(vertical = 4.dp)){
 
         for (person in peopleList)
             item {
@@ -35,9 +35,8 @@ fun ContactInfo(person: PERSON) {
     ) {
         Row(modifier= Modifier
             .fillMaxSize()
-            .padding(24.dp)) {
-            Text(text = person.name)
-            Spacer(modifier = Modifier.size(10.dp))
+            .padding(24.dp)) { Text(text = person.name)
+                          Spacer(modifier = Modifier.size(10.dp))
             Text(text = person.tel)
         }
     }

@@ -88,7 +88,7 @@ fun CalendarView(
                     .padding(top = 16.dp),
                 textAlign = TextAlign.Center
             )
-            IconButton(onClick = { monthDecrement() }) {
+            IconButton(onClick = { monthIncrement() }) {
                 Text(">>")
             }
         }
