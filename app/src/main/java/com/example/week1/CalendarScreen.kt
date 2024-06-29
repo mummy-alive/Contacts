@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.Surface
@@ -25,38 +26,90 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.week1.ui.theme.Week1Theme
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
 
 @Composable
 fun CalendarScreen(modifier: Modifier = Modifier) {
-    CalendarView(modifier)
+
+    CalendarView(modifier,
+        /*currentMonth = currentMonth,
+        currentYear = currentYear,
+        onNextMonth = { nextMonth() },
+        onPrevMonth = { prevMonth() }*/
+        )
 }
 
-/*ToDo: 날짜 API 설정 완료하기 */
 @Composable
-fun CalendarView(modifier: Modifier) {
-    /*ToDo: 날짜 API 설정 완료하기 */
+fun CalendarView(
+    modifier: Modifier,
+    /*ToDo: Add Calendar Moving button*/
+    /*    currentMonth: Int,
+        currentYear: Int,
+        onNextMonth: () -> Unit,
+        onPrevMonth: () -> Unit*/
+) {
+    val date: LocalDate = LocalDate.now()
     val dowArray: List<String> = listOf("일", "월", "화", "수", "목", "금", "토")
-    val nowDate = "2023-10-24"
-    val formatter = SimpleDateFormat("yyyy-mm-dd", Locale.KOREA)
-    val date = Date()
+    val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.KOREA)
+    val formattedDate = date.format(formatter)
 
-    val yearState by remember { mutableStateOf(formatter.format(date).split('-').first()) }
-    val monthState by remember { mutableStateOf(formatter.format(date).split('-')[1]) }
-    val dayState by remember { mutableStateOf(formatter.format(date).split('-').last()) }
+    val yearState by remember { mutableStateOf(formattedDate.split('-').first()) }
+    val monthState by remember { mutableStateOf(formattedDate.split('-')[1]) }
+    val dayState by remember { mutableStateOf(formattedDate.split('-').last()) }
 
-    LazyVerticalGrid(
-        modifier = Modifier.fillMaxSize(),
-        columns = GridCells.Fixed(7)
+    /*ToDo: Add Calendar Moving button*/
+    /*Box(
+        modifier = Modifier
+            .background(Color.Unspecified)
+            .padding(4.dp)
     ) {
-        items(7) { dow ->
-            DowBox(dowArray[dow], modifier)
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(vertical = 16.dp),
+            horizontalArrangement = Arrangement.End
+        ) {
+            LastMonthButton(onPrevMonth)
+            NextMonthButton(onNextMonth)
+        }
+    }*/
+    Box(
+        modifier = Modifier
+            .size(700.dp)
+            .background(Color.Unspecified)
+            .padding(4.dp)
+    ) {
+        LazyVerticalGrid(
+            modifier = Modifier.fillMaxSize(),
+            columns = GridCells.Fixed(7)
+        ) {
+            items(7) { dow ->
+                DowBox(dowArray[dow], modifier)
 
+            }
+            items(40) { day ->
+                CalendarBox(day, modifier)
+            }
         }
-        items(40) { day ->
-            CalendarBox(day, modifier)
-        }
+    }
+}
+
+/*ToDo: Add Calendar Moving button*/
+@Composable
+fun LastMonthButton(onClick: () -> Unit) {
+    IconButton(onClick = onClick){
+        Text("<")
+    }
+}
+
+/*ToDo: Add Calendar Moving button*/
+@Composable
+fun NextMonthButton(onClick: () -> Unit) {
+    IconButton(onClick = onClick){
+        Text(">")
     }
 }
 
