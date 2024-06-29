@@ -32,12 +32,10 @@ fun ContactInfo(person: PERSON) {
         color = MaterialTheme.colorScheme.primary,
         modifier = Modifier.padding(vertical =4.dp, horizontal = 8.dp)
     ) {
-<<<<<<< HEAD
         Row(modifier= Modifier
             .fillMaxSize()
             .padding(24.dp)) { Text(text = person.name)
                           Spacer(modifier = Modifier.size(10.dp))
-=======
         Row(
             modifier = Modifier
                 .fillMaxSize()
@@ -45,7 +43,6 @@ fun ContactInfo(person: PERSON) {
         ) {
             Text(text = person.name)
             Spacer(modifier = Modifier.size(10.dp))
->>>>>>> 11e252726e5c8d13c7b56bfa2244f74cfa2623b6
             Text(text = person.tel)
         }
     }
