@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">week1</string>
-    <string name="photo_name_1">불국사</string>
-    <string name="photo_name_2">에펠탑</string>
-    <string name="photo_name_3">만리장성</string>
-    <string name="photo_name_4">피라미드</string>
-    <string name="photo_name_5">스핑크스</string>
+    <string name="photo_name_1">리본휘트니스</string>
+    <string name="photo_name_2">세종관</string>
+    <string name="photo_name_3">아름관</string>
+    <string name="photo_name_4">플랜에이피트니스</string>
+    <string name="photo_name_5">더바디짐</string>
+    <string name="photo_name_6">대강당</string>
+    <string name="photo_name_7">스포츠컴플렉스</string>
+    <string name="address_1">대전광역시 유성구 어은로 57 한빛프라자 5층</string>
+
 </resources>
