@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
 fun TabScreen(modifier: Modifier = Modifier,
               peopleList: List<PERSON>) {
     var tabIndex by rememberSaveable { mutableIntStateOf(0) }
-    val tabs = listOf("Contacts", "Photo", "Third")
+    val tabs = listOf("Contacts", "Photo", "Calendar")
 
     Column(modifier = modifier.fillMaxWidth()) {
         TabRow(selectedTabIndex = tabIndex) {
@@ -76,7 +76,7 @@ fun TabScreen(modifier: Modifier = Modifier,
         when (tabIndex) {
             0 -> ContactsScreen(peopleList = peopleList)
             1 -> PhotoScreen()
-            2 -> ThirdScreen()
+            2 -> CalendarScreen()
         }
     }
 }

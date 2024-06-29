@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun ThirdScreen(modifier: Modifier = Modifier) {
+fun CalendarScreen(modifier: Modifier = Modifier) {
     Text(
         text = "Third",
         modifier = modifier.padding(24 .dp)
