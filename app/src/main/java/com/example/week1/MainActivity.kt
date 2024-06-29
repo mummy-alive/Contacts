@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -94,7 +93,7 @@ fun ContactPreview(){
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun TabPreview() {
     Week1Theme {
         TabScreen(peopleList = listOf(
             PERSON(name = "John Doe", tel = "010-8188-2222"),
