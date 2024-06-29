@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -50,6 +51,7 @@ val photos = listOf(
 fun PhotoScreen(
     modifier: Modifier = Modifier
 ) {
+    val scrollState = rememberLazyListState()
     var selectedImageId by rememberSaveable { mutableStateOf<Int?>(null) }
     if (selectedImageId != null) {
         FullScreenImage(imageId = selectedImageId!!) {
@@ -57,6 +59,7 @@ fun PhotoScreen(
         }
     } else {
         LazyColumn(
+            state = scrollState,
             modifier = modifier
         ) {
             itemsIndexed(photos) { _, photo ->
