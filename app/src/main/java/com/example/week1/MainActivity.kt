@@ -102,3 +102,11 @@ fun GreetingPreview() {
         ))
     }
 }
+
+@Preview(showBackground = true)
+@Composable
+fun CalendarPreview(){
+    Week1Theme {
+        CalendarScreen()
+    }
+}
