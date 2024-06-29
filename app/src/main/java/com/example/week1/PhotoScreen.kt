@@ -4,14 +4,19 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -42,15 +47,43 @@ val photos = listOf(
 
 @Composable
 fun PhotoScreen(
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
-    LazyColumn(
-        modifier = modifier,
-        verticalArrangement = Arrangement.spacedBy(3.dp),
-    ) {
-        items(photos) { info ->
-            DrawPhoto(photo = info)
+    var selectedImageId by rememberSaveable { mutableStateOf<Int?>(null) }
+    if (selectedImageId != null) {
+        FullScreenImage(imageId = selectedImageId!!) {
+            selectedImageId = null
         }
+    } else {
+        LazyColumn(
+            modifier = modifier
+        ) {
+            itemsIndexed(photos) { _, photo ->
+                DrawPhoto(
+                    photo = photo,
+                    modifier = Modifier
+                        .clickable { selectedImageId = photo.imageResourceId },
+                    )
+            }
+        }
+    }
+}
+
+@Composable
+fun FullScreenImage(imageId: Int, onDismiss: () -> Unit) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .clickable { onDismiss() },
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = painterResource(id = imageId),
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color.Black)
+        )
     }
 }
 
@@ -59,15 +92,14 @@ fun DrawPhoto(
     photo: Photo,
     modifier: Modifier = Modifier
 ) {
-    Box(
-    ) {
+    Box() {
         Image(
             painter = painterResource(id = photo.imageResourceId),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = modifier
                 .padding(1.dp)
-                .aspectRatio(1f / 1f)
+                .aspectRatio(1f)
                 .background(Color.Yellow)
         )
         Text(
@@ -90,10 +122,8 @@ fun DrawPhoto(
                 .align(Alignment.BottomEnd)
                 .padding(bottom = 15.dp)
         )
-
     }
 }
-
 
 @Preview(showBackground = true)
 @Composable
