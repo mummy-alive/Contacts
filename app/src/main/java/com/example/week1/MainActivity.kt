@@ -1,8 +1,10 @@
 package com.example.week1
 
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -58,10 +60,12 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun TabScreen(modifier: Modifier = Modifier,
-              peopleList: List<PERSON>) {
+fun TabScreen(
+    modifier: Modifier = Modifier,
+    peopleList: List<PERSON>
+) {
     var tabIndex by rememberSaveable { mutableIntStateOf(0) }
-    val tabs = listOf("Contacts", "Photo", "Third")
+    val tabs = listOf("Contacts", "Photo", "Calendar")
 
     Column(modifier = modifier.fillMaxWidth()) {
         TabRow(selectedTabIndex = tabIndex) {
@@ -75,19 +79,21 @@ fun TabScreen(modifier: Modifier = Modifier,
         when (tabIndex) {
             0 -> ContactsScreen(peopleList = peopleList)
             1 -> PhotoScreen()
-            2 -> ThirdScreen()
+            2 -> CalendarScreen()
         }
     }
 }
 
 @Preview(showBackground = true, widthDp = 320, heightDp = 200)
 @Composable
-fun ContactPreview(){
+fun ContactPreview() {
     Week1Theme {
-        ContactsScreen( peopleList = listOf(
-            PERSON(name = "John Doe", tel = "010-8188-2222"),
-            PERSON(name = "Amy Pearson", tel = "010-9999-4444")
-        ))
+        ContactsScreen(
+            peopleList = listOf(
+                PERSON(name = "John Doe", tel = "010-8188-2222"),
+                PERSON(name = "Amy Pearson", tel = "010-9999-4444")
+            )
+        )
     }
 }
 
@@ -95,9 +101,19 @@ fun ContactPreview(){
 @Composable
 fun TabPreview() {
     Week1Theme {
-        TabScreen(peopleList = listOf(
-            PERSON(name = "John Doe", tel = "010-8188-2222"),
-            PERSON(name = "Amy Pearson", tel = "010-9999-4444")
-        ))
+        TabScreen(
+            peopleList = listOf(
+                PERSON(name = "John Doe", tel = "010-8188-2222"),
+                PERSON(name = "Amy Pearson", tel = "010-9999-4444")
+            )
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun CalendarPreview() {
+    Week1Theme {
+        CalendarScreen()
     }
 }
