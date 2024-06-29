@@ -19,7 +19,6 @@ fun ContactsScreen(
     peopleList: List<PERSON>
 ) {
     LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
-
         for (person in peopleList)
             item {
                 ContactInfo(person)
