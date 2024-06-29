@@ -3,14 +3,15 @@ package com.example.week1
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -70,20 +71,24 @@ fun PhotoScreen(
 }
 
 @Composable
-fun FullScreenImage(imageId: Int, onDismiss: () -> Unit) {
+fun FullScreenImage(
+    imageId: Int,
+    onClick: () -> Unit
+) {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .clickable { onDismiss() },
-        contentAlignment = Alignment.Center
     ) {
         Image(
             painter = painterResource(id = imageId),
             contentDescription = null,
+            contentScale = ContentScale.Crop,
             modifier = Modifier
-                .fillMaxSize()
-                .background(Color.Black)
+                .fillMaxWidth()
         )
+        Button(onClick = onClick) {
+            Text(text = "Back")
+        }
     }
 }
 
@@ -92,7 +97,7 @@ fun DrawPhoto(
     photo: Photo,
     modifier: Modifier = Modifier
 ) {
-    Box() {
+    Box {
         Image(
             painter = painterResource(id = photo.imageResourceId),
             contentDescription = null,
@@ -100,7 +105,6 @@ fun DrawPhoto(
             modifier = modifier
                 .padding(1.dp)
                 .aspectRatio(1f)
-                .background(Color.Yellow)
         )
         Text(
             text = stringResource(id = photo.nameId),
