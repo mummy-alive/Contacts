@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.CalendarView
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import android.content.Context
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -35,18 +37,43 @@ fun CalendarScreen() {
             Text("운동 시간 기록하기")
         }
     }
-
     if (showDialog) {
         ExerciseTimeDialog(onDismiss = { showDialog = false })
-    } else {
-        //lorem ipsum
     }
 
 }
 
 @Composable
 fun ExerciseTimeDialog(onDismiss: () -> Unit) {
+    var context = LocalContext.current
+    val dialogView = LayoutInflater.from(context).inflate(R.layout.exercise_time_dialog, null)
+    val alertDialog = AlertDialog.Builder(context)
+        .setView(dialogView)
+        .setOnDismissListener { onDismiss() }
+        .create()
 
+    dialogView.findViewById<android.widget.Button>(R.id.successButton).setOnClickListener {
+        val calendarView = dialogView.findViewById<CalendarView>(R.id.calendarView)
+        val editTime = dialogView.findViewById<EditText>(R.id.editTime)
+        val selectedDate = calendarView.date
+        val exerciseTime = editTime.text.toString()
+
+        // Process the input values (e.g., save them or use them in the app)
+        Toast.makeText(
+            context,
+            "성공적으로 저장되었습니다.",
+            Toast.LENGTH_SHORT
+        ).show()
+        alertDialog.dismiss()
+    }
+
+    dialogView.findViewById<android.widget.Button>(R.id.declineButton).setOnClickListener {
+        Toast.makeText(context, "저장을 취소하였습니다.", Toast.LENGTH_SHORT).show()
+        alertDialog.dismiss()
+    }
+
+    alertDialog.show()
+/*
     val context = LocalContext.current
     AndroidView(
         factory = { context ->
@@ -71,7 +98,7 @@ fun ExerciseTimeDialog(onDismiss: () -> Unit) {
             }
         },
         modifier = Modifier.fillMaxSize()
-    )
+    )*/
 }
 
 @Preview(showBackground = true)
