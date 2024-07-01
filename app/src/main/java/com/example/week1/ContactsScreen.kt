@@ -16,17 +16,21 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -41,6 +45,8 @@ import com.example.week1.ui.theme.Week1Theme
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.io.IOException
+import java.util.Calendar
+import java.util.concurrent.TimeUnit
 
 @Composable
 fun ContactsScreen(
@@ -49,14 +55,27 @@ fun ContactsScreen(
     val context = LocalContext.current
     val jsonString = readJsonFile(context, "peopleInfo.json")
     val people = parseJsonToPeople(jsonString)
-    LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
-        items(people) {
-            ContactItem(
-                    person = it,
+    var selectedPerson by rememberSaveable { mutableStateOf<Person?>(null) }
+
+    if (selectedPerson == null) {
+        LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
+            itemsIndexed(people) {_, person ->
+                ContactItem(
+                    person = person,
                     modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-            )
+                ) {
+                    selectedPerson = person
+                    //nameToRecentExercise = nameToRecentExercise.plus(Pair(it.name, calendarToString(Calendar.getInstance())))
+                }
+            }
         }
     }
+    else {
+        ShowCalendar(selectedPerson!!) {
+            selectedPerson = null
+        }
+    }
+
 }
 
 val nameToResourceIdMap = mapOf(
@@ -73,13 +92,22 @@ val nameToResourceIdMap = mapOf(
     "이혜인" to R.drawable.lhi
 )
 
+var nameToRecentExercise = mapOf(
+    "안유진" to "2024/06/01"
+)
+
 @Composable
 fun ContactItem(
     person: Person,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
 ) {
+//    Surface(onClick = onClick) {
+//        Text(text = person.name)
+//    }
     val context = LocalContext.current
     person.imageResourceId = nameToResourceIdMap[person.name] ?: R.drawable.default_image
+    person.recentExercise = nameToRecentExercise[person.name] ?: "기록 없음"
     Card(
         modifier = modifier,
         onClick = {
@@ -91,11 +119,13 @@ fun ContactItem(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(dimensionResource(R.dimen.padding_small))
+                .padding(dimensionResource(R.dimen.padding_small)),
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            PersonIcon(person.imageResourceId)
+            //PersonIcon(person.imageResourceId)
             PersonInformation(person.name, person.tel)
             Spacer(Modifier.weight(1f))
+            RecentExercise(person.recentExercise, modifier, onClick)
         }
     }
 }
@@ -134,40 +164,65 @@ fun PersonInformation(
 }
 
 @Composable
-fun Calendar() {
-    var date by remember { mutableStateOf("") }
+fun RecentExercise(
+    recentExercise: String,
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
+    Surface(
+        onClick = onClick,
+        modifier = modifier,
+        color = MaterialTheme.colorScheme.secondaryContainer,
+        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+    ) {
+        if (recentExercise == "기록 없음") {
+            Text(text = "기록 없음")
+        } else {
+            val today = Calendar.getInstance()
+            val recent = stringToCalendar(recentExercise)
 
-    Scaffold(
-        topBar = {
-            TopAppBar(title = { Text(text = "Calendar") })
-        },
-        content = { paddingValues ->
-            Box(modifier = Modifier.padding(paddingValues)) {
-                Column {
-                    AndroidView(
-                        factory = { context -> android.widget.CalendarView(context) },
-                        update = { calendarView ->
-                            calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-                                date = "$year/${month + 1}/$dayOfMonth"
-                            }
-                        }
-                    )
-                    Text(text = date)
-                }
-            }
+            val diffDays = TimeUnit.MILLISECONDS.toDays(today.timeInMillis - recent.timeInMillis)
+            Text(text = "${diffDays}일 전")
         }
-    )
-}
-
-
-fun readJsonFile(context: Context, fileName: String): String {
-    return try {
-        context.assets.open(fileName).bufferedReader().use { it.readText() }
-    } catch (ioException: IOException) {
-        ioException.printStackTrace()
-        ""
     }
 }
+
+
+@Composable
+fun ShowCalendar(
+    person: Person,
+    onClick: () -> Unit
+) {
+    var selectedDate = Calendar.getInstance()
+    val year = selectedDate.get(Calendar.YEAR)
+    val month = selectedDate.get(Calendar.MONTH)
+    val day = selectedDate.get(Calendar.DAY_OF_MONTH)
+    var date by remember { mutableStateOf("$year/${month + 1}/$day") }
+    Column {
+        AndroidView(
+            factory = { context ->
+                android.widget.CalendarView(context).apply { setDate(selectedDate.timeInMillis) }
+            },
+            update = { calendarView ->
+                calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+                    date = "$year/${month + 1}/$dayOfMonth"
+                    onClick()
+                }
+            }
+        )
+        Text(text = date)
+    }
+}
+
+fun readJsonFile(context: Context, fileName: String): String {
+        return try {
+            context.assets.open(fileName).bufferedReader().use { it.readText() }
+        } catch (ioException: IOException) {
+            ioException.printStackTrace()
+            ""
+        }
+    }
+
 fun parseJsonToPeople(jsonString: String): List<Person> {
     val gson = Gson()
     val listType = object : TypeToken<List<Person>>() {}.type
@@ -175,10 +230,25 @@ fun parseJsonToPeople(jsonString: String): List<Person> {
     return people.sortedBy { it.name }
 }
 
+fun stringToCalendar(date: String): Calendar {
+    val parts = date.split("/")
+    val set = Calendar.getInstance()
+    set.set(parts[0].toInt(), parts[1].toInt() - 1, parts[2].toInt())
+    return set
+}
+
+fun calendarToString(date: Calendar): String {
+    val year = date.get(Calendar.YEAR)
+    val month = date.get(Calendar.MONTH) + 1
+    val day = date.get(Calendar.DAY_OF_MONTH)
+    return "$year/${month+1}/$day"
+}
+
+
 @Preview(showBackground = true)
 @Composable
-fun ContactPreview() {
+fun ContactsPreview() {
     Week1Theme {
-        Calendar()
+        ContactsScreen()
     }
 }
