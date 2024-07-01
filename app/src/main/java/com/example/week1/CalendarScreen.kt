@@ -36,7 +36,9 @@ import java.time.format.DateTimeFormatter
 import java.util.Date
 import java.util.Locale
 
-
+/* WARNING: This file is to be deprecated. Now migrated to HeatmapCalendarScreen.kt
+   주의: 이 파일은 곧 삭제됩니다. 해당 화면은 HeatmapCalendarScreen.kt로 마이그레이션되었습니다
+ */
 @Composable
 fun CalendarScreen(modifier: Modifier = Modifier) {
 
@@ -54,15 +56,16 @@ fun CalendarView(
     var monthState by remember { mutableIntStateOf(currentDate.monthValue) }
     var dayState by remember { mutableIntStateOf(currentDate.dayOfMonth) }
 
-    fun monthIncrement(){
+    fun monthIncrement() {
         if (monthState == 12) {
             monthState = 1
             yearState += 1
         } else
             monthState += 1
     }
-    fun monthDecrement(){
-        if(monthState == 1){
+
+    fun monthDecrement() {
+        if (monthState == 1) {
             monthState = 12
             yearState -= 1
         } else
@@ -77,7 +80,8 @@ fun CalendarView(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 16.dp)
+                .padding(vertical = 16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
             IconButton(onClick = { monthDecrement() }) {
                 Text("<<")
@@ -103,22 +107,25 @@ fun CalendarView(
             modifier = Modifier.fillMaxSize(), columns = GridCells.Fixed(7)
         ) {
             items(7) { dow ->
-                DowBox(dowArray[dow], modifier)
+                DowBox(dowArray[dow])
             }
             items(40) { day ->
-                CalendarBox(day, modifier)
+                var flg:Boolean = false
+                if (day < 4) flg = true
+                CalendarBox(day,flg)
             }
         }
     }
 }
 
 @Composable
-fun DowBox(dow: String, modifier: Modifier) {
+fun DowBox(dow: String) {
     Surface(
         color = MaterialTheme.colorScheme.background,
         modifier = Modifier
             .padding(vertical = 0.dp, horizontal = 0.dp)
             .border(0.dp, Color.LightGray, RoundedCornerShape(4.dp))
+            .aspectRatio(1.7f)
     ) {
         Box(
             modifier = Modifier
@@ -130,7 +137,7 @@ fun DowBox(dow: String, modifier: Modifier) {
                 text = dow,
                 Modifier
                     .align(Alignment.CenterStart)
-                    .padding(start = 2.dp, top = 2.dp),
+                    .padding(start = 1.dp, top = 1.dp),
                 fontSize = 8.sp
             )
         }
@@ -138,12 +145,13 @@ fun DowBox(dow: String, modifier: Modifier) {
 }
 
 @Composable
-fun CalendarBox(day: Int, modifier: Modifier) {
+fun CalendarBox(day: Int, isBlank: Boolean) {
     Surface(
         color = MaterialTheme.colorScheme.background,
         modifier = Modifier
             .padding(vertical = 0.dp, horizontal = 0.dp)
             .border(0.dp, Color.LightGray, RoundedCornerShape(4.dp))
+            .aspectRatio(1.2f)
     ) {
         Box(
             modifier = Modifier
@@ -151,20 +159,22 @@ fun CalendarBox(day: Int, modifier: Modifier) {
                 .padding(4.dp)
                 .background(Color.Unspecified)
         ) {
-            Column(
-                modifier = Modifier.fillMaxSize()
-            ) {
-                Text(
-                    text = day.toString(), Modifier.align(Alignment.Start),
-                    //.padding(start = 2.dp, top = 2.dp),
-                    fontSize = 8.sp
-                )
-                Spacer(modifier = Modifier.size(10.dp))
-                Text(
-                    text = "오운완\uD83D\uDD25", Modifier.align(Alignment.CenterHorizontally),
-                    //.padding(bottom = 4.dp),
-                    fontSize = 6.sp
-                )
+            if (!isBlank) {
+                Column(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    Text(
+                        text = day.toString(), Modifier.align(Alignment.Start),
+                        //.padding(start = 2.dp, top = 2.dp),
+                        fontSize = 8.sp
+                    )
+                    Spacer(modifier = Modifier.size(10.dp))
+                    Text(
+                        text = "오운완\uD83D\uDD25", Modifier.align(Alignment.CenterHorizontally),
+                        //.padding(bottom = 4.dp),
+                        fontSize = 6.sp
+                    )
+                }
             }
         }
     }
