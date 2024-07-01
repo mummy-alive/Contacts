@@ -51,7 +51,15 @@ fun ContactsScreen(
 val nameToResourceIdMap = mapOf(
     "안유진" to R.drawable.ayj,
     "장원영" to R.drawable.jwy,
-    "김가을" to R.drawable.kge
+    "김가을" to R.drawable.kge,
+    "나오이 레이" to R.drawable.rei,
+    "김지원" to R.drawable.kjw,
+    "이현서" to R.drawable.lhs,
+    "강해린" to R.drawable.khr,
+    "김민지" to R.drawable.kmj,
+    "모지혜" to R.drawable.mzh,
+    "팜하니" to R.drawable.phn,
+    "이혜인" to R.drawable.lhi
 )
 
 @Composable
