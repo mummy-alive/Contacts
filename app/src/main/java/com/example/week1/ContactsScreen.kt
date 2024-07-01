@@ -1,6 +1,8 @@
 package com.example.week1
 
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -57,9 +59,15 @@ fun ContactItem(
     person: Person,
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
     person.imageResourceId = nameToResourceIdMap[person.name] ?: R.drawable.default_image
     Card(
-        modifier = modifier
+        modifier = modifier,
+        onClick = {
+            val u = Uri.parse("tel:${person.tel}")
+            val i = Intent(Intent.ACTION_DIAL, u)
+            context.startActivity(i)
+        }
     ) {
         Row(
             modifier = Modifier
