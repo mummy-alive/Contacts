@@ -133,7 +133,8 @@ fun readJsonFile(context: Context, fileName: String): String {
 fun parseJsonToPeople(jsonString: String): List<Person> {
     val gson = Gson()
     val listType = object : TypeToken<List<Person>>() {}.type
-    return gson.fromJson(jsonString, listType)
+    val people: List<Person> = gson.fromJson(jsonString, listType)
+    return people.sortedBy { it.name }
 }
 
 @Preview(showBackground = true)
