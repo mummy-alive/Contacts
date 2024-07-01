@@ -1,7 +1,7 @@
 package com.example.week1
 
+import android.content.Context
 import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,34 +18,46 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.week1.data.Person
-import com.example.week1.data.people
 import com.example.week1.ui.theme.Week1Theme
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import java.io.IOException
 
 @Composable
 fun ContactsScreen(
     modifier: Modifier = Modifier
 ) {
+    val context = LocalContext.current
+    val jsonString = readJsonFile(context, "peopleInfo.json")
+    val people = parseJsonToPeople(jsonString)
     LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
         items(people) {
             ContactItem(
                     person = it,
                     modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-                )
+            )
         }
     }
 }
+
+val nameToResourceIdMap = mapOf(
+    "안유진" to R.drawable.ayj,
+    "장원영" to R.drawable.jwy,
+    "김가을" to R.drawable.kge
+)
 
 @Composable
 fun ContactItem(
     person: Person,
     modifier: Modifier = Modifier
 ) {
+    person.imageResourceId = nameToResourceIdMap[person.name] ?: R.drawable.default_image
     Card(
         modifier = modifier
     ) {
@@ -79,19 +91,33 @@ fun PersonIcon(
 
 @Composable
 fun PersonInformation(
-    @StringRes personName: Int,
-    @StringRes personTel: Int,
+    personName: String,
+    personTel: String,
     modifier: Modifier = Modifier
 ) {
     Column(modifier = modifier) {
         Text(
-            text = stringResource(personName),
+            text = personName,
             modifier = Modifier.padding(top = dimensionResource(R.dimen.padding_small))
         )
         Text(
-            text = stringResource(personTel)
+            text = personTel
         )
     }
+}
+
+fun readJsonFile(context: Context, fileName: String): String {
+    return try {
+        context.assets.open(fileName).bufferedReader().use { it.readText() }
+    } catch (ioException: IOException) {
+        ioException.printStackTrace()
+        ""
+    }
+}
+fun parseJsonToPeople(jsonString: String): List<Person> {
+    val gson = Gson()
+    val listType = object : TypeToken<List<Person>>() {}.type
+    return gson.fromJson(jsonString, listType)
 }
 
 @Preview(showBackground = true)
