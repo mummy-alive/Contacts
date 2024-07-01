@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalMaterial3Api::class)
-
 package com.example.week1
 
 import android.content.Context
@@ -7,7 +5,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,15 +12,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -65,17 +59,16 @@ fun ContactsScreen(
                     modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
                 ) {
                     selectedPerson = person
-                    //nameToRecentExercise = nameToRecentExercise.plus(Pair(it.name, calendarToString(Calendar.getInstance())))
                 }
             }
         }
     }
     else {
-        ShowCalendar(selectedPerson!!) {
+        ShowCalendar { date ->
+            nameToRecentExercise = nameToRecentExercise + (selectedPerson!!.name to date)
             selectedPerson = null
         }
     }
-
 }
 
 val nameToResourceIdMap = mapOf(
@@ -93,7 +86,7 @@ val nameToResourceIdMap = mapOf(
 )
 
 var nameToRecentExercise = mapOf(
-    "안유진" to "2024/06/01"
+    "안유진" to "2024/06/24"
 )
 
 @Composable
@@ -143,6 +136,7 @@ fun PersonIcon(
         contentScale = ContentScale.Crop,
         painter = painterResource(personIcon),
         contentDescription = null
+
     )
 }
 
@@ -190,10 +184,9 @@ fun RecentExercise(
 
 @Composable
 fun ShowCalendar(
-    person: Person,
-    onClick: () -> Unit
+    onClick: (String) -> Unit
 ) {
-    var selectedDate = Calendar.getInstance()
+    val selectedDate = Calendar.getInstance()
     val year = selectedDate.get(Calendar.YEAR)
     val month = selectedDate.get(Calendar.MONTH)
     val day = selectedDate.get(Calendar.DAY_OF_MONTH)
@@ -206,7 +199,7 @@ fun ShowCalendar(
             update = { calendarView ->
                 calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
                     date = "$year/${month + 1}/$dayOfMonth"
-                    onClick()
+                    onClick(date)
                 }
             }
         )
