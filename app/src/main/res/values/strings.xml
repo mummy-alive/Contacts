@@ -8,5 +8,10 @@
     <string name="photo_name_6">대강당</string>
     <string name="photo_name_7">스포츠컴플렉스</string>
     <string name="address_1">대전광역시 유성구 어은로 57 한빛프라자 5층</string>
-
+    <string name="person_name_1">안유진</string>
+    <string name="person_name_2">장원영</string>
+    <string name="person_name_3">유재석</string>
+    <string name="person_phone_1">010-0000-0000</string>
+    <string name="person_phone_2">010-0000-1111</string>
+    <string name="person_phone_3">010-0000-2222</string>
 </resources>

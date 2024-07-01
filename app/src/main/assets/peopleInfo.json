@@ -2,47 +2,58 @@
   "member": [
     {
       "name": "John Doe",
-      "tel": "010-8188-2222"
+      "tel": "010-8188-2222",
+      "icon": "R.drawble.sejong"
     },
     {
       "name": "Amy Pearson",
-      "tel": "010-9999-4444"
+      "tel": "010-9999-4444",
+      "icon": "R.drawble.sejong"
     },
     {
       "name": "Kathy Kim",
-      "tel": "010-1111-2626"
+      "tel": "010-1111-2626",
+      "icon": "R.drawble.sejong"
     },
     {
       "name": "Sarah Roh",
-      "tel": "010-7777-8888"
+      "tel": "010-7777-8888",
+      "icon": "R.drawble.sejong"
     },
     {
       "name": "Ron Bronte",
-      "tel": "070-2422-1111"
+      "tel": "070-2422-1111",
+      "icon": "R.drawble.sejong"
     },
     {
       "name": "Michael Smith",
-      "tel": "010-1234-5678"
+      "tel": "010-1234-5678",
+      "icon": "R.drawble.sejong"
     },
     {
       "name": "Laura Wilson",
-      "tel": "010-8765-4321"
+      "tel": "010-8765-4321",
+      "icon": "R.drawble.sejong"
     },
     {
       "name": "David Brown",
-      "tel": "010-2222-3333"
+      "tel": "010-2222-3333",
+      "icon": "R.drawble.sejong"
     },
     {
       "name": "Emma Davis",
-      "tel": "010-4444-5555"
+      "tel": "010-4444-5555",
+      "icon": "R.drawble.sejong"
     },
     {
       "name": "Mary Jane",
-      "tel": "010-3333-2121"
+      "tel": "010-3333-2121",
+      "icon": "R.drawble.sejong"
     },
     {
       "name": "Peter Parker",
-      "tel": "010-7543-6678"
+      "tel": "010-7543-6678",
+      "icon": "R.drawble.sejong"
     }
   ]
 }
