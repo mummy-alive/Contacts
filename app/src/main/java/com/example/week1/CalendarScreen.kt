@@ -39,6 +39,7 @@ import java.util.Locale
 /* WARNING: This file is to be deprecated. Now migrated to HeatmapCalendarScreen.kt
    주의: 이 파일은 곧 삭제됩니다. 해당 화면은 HeatmapCalendarScreen.kt로 마이그레이션되었습니다
  */
+/*
 @Composable
 fun CalendarScreen(modifier: Modifier = Modifier) {
 
@@ -178,4 +179,4 @@ fun CalendarBox(day: Int, isBlank: Boolean) {
             }
         }
     }
-}
+}*/

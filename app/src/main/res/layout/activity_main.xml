@@ -22,37 +22,37 @@
         android:id="@+id/weekExerciseTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="이번주 누적 운동시간: 5시간 31분"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/monthExerciseTime"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="이번주 누적 운동시간: 5시간 31분"
+        app:layout_constraintBottom_toTopOf="@id/monthExerciseTime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/monthExerciseTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="이번달 누적 운동시간: 17시간 29분"
-        app:layout_constraintTop_toBottomOf="@id/weekExerciseTime"
-        app:layout_constraintBottom_toTopOf="@id/exerciseTimeDialogButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="이번달 누적 운동시간: 17시간 29분"
+        app:layout_constraintBottom_toTopOf="@id/exerciseTimeDialogButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weekExerciseTime" />
 
     <Button
         android:id="@+id/exerciseTimeDialogButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="운동 시간 기록하기"
-        app:layout_constraintTop_toBottomOf="@id/weekExerciseTime"
-        app:layout_constraintBottom_toTopOf="@id/exerciseTimeDialogButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginBottom="16dp"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="운동 시간 기록하기"
+        app:layout_constraintBottom_toTopOf="@id/exerciseTimeDialogButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/weekExerciseTime" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

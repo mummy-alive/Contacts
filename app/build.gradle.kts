@@ -37,6 +37,8 @@ android {
         jvmTarget = "1.8"
     }
     buildFeatures {
+        dataBinding = true
+        viewBinding = true
         compose = true
     }
     composeOptions {
@@ -60,6 +62,7 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.databinding.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -34,8 +34,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:gravity="center"
-        android:inputType="number"
         android:hint="운동한 시간을 입력하세요"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calendarView" />
@@ -46,10 +46,10 @@
         android:layout_height="45dp"
         android:layout_marginTop="72dp"
         android:text="취소"
-        app:layout_constraintTop_toBottomOf="@id/editTime"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/successButton"
-        app:layout_constraintHorizontal_chainStyle="packed" />
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editTime" />
 
     <Button
         android:id="@+id/successButton"
@@ -57,8 +57,8 @@
         android:layout_height="45dp"
         android:layout_marginTop="72dp"
         android:text="확인"
-        app:layout_constraintTop_toBottomOf="@id/editTime"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/declineButton"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/editTime" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
