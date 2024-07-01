@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalMaterial3Api::class)
+
 package com.example.week1
 
 import android.content.Context
@@ -5,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -14,9 +17,16 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
@@ -25,6 +35,7 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import com.example.week1.data.Person
 import com.example.week1.ui.theme.Week1Theme
 import com.google.gson.Gson
@@ -122,6 +133,33 @@ fun PersonInformation(
     }
 }
 
+@Composable
+fun Calendar() {
+    var date by remember { mutableStateOf("") }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(title = { Text(text = "Calendar") })
+        },
+        content = { paddingValues ->
+            Box(modifier = Modifier.padding(paddingValues)) {
+                Column {
+                    AndroidView(
+                        factory = { context -> android.widget.CalendarView(context) },
+                        update = { calendarView ->
+                            calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+                                date = "$year/${month + 1}/$dayOfMonth"
+                            }
+                        }
+                    )
+                    Text(text = date)
+                }
+            }
+        }
+    )
+}
+
+
 fun readJsonFile(context: Context, fileName: String): String {
     return try {
         context.assets.open(fileName).bufferedReader().use { it.readText() }
@@ -141,6 +179,6 @@ fun parseJsonToPeople(jsonString: String): List<Person> {
 @Composable
 fun ContactPreview() {
     Week1Theme {
-        ContactsScreen()
+        Calendar()
     }
 }
