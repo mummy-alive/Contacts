@@ -41,8 +41,8 @@ fun ContactsScreen(
     LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
         items(people) {
             ContactItem(
-                    person = it,
-                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+                person = it,
+                modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
             )
         }
     }
@@ -120,21 +120,6 @@ fun PersonInformation(
             text = personTel
         )
     }
-}
-
-fun readJsonFile(context: Context, fileName: String): String {
-    return try {
-        context.assets.open(fileName).bufferedReader().use { it.readText() }
-    } catch (ioException: IOException) {
-        ioException.printStackTrace()
-        ""
-    }
-}
-fun parseJsonToPeople(jsonString: String): List<Person> {
-    val gson = Gson()
-    val listType = object : TypeToken<List<Person>>() {}.type
-    val people: List<Person> = gson.fromJson(jsonString, listType)
-    return people.sortedBy { it.name }
 }
 
 @Preview(showBackground = true)

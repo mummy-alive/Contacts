@@ -1,0 +1,43 @@
+{
+  "maxData": 290,
+  "history": [
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 1,
+      "exercise": 55
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 2,
+      "exercise": 290
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 3,
+      "exercise": 100
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 4,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 5,
+      "exercise": 80
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 6,
+      "exercise": 56
+    }
+
+  ]
+
+}
