@@ -1,48 +1,46 @@
-{
-  "member": [
-    {
-      "name": "John Doe",
-      "tel": "010-8188-2222"
-    },
-    {
-      "name": "Amy Pearson",
-      "tel": "010-9999-4444"
-    },
-    {
-      "name": "Kathy Kim",
-      "tel": "010-1111-2626"
-    },
-    {
-      "name": "Sarah Roh",
-      "tel": "010-7777-8888"
-    },
-    {
-      "name": "Ron Bronte",
-      "tel": "070-2422-1111"
-    },
-    {
-      "name": "Michael Smith",
-      "tel": "010-1234-5678"
-    },
-    {
-      "name": "Laura Wilson",
-      "tel": "010-8765-4321"
-    },
-    {
-      "name": "David Brown",
-      "tel": "010-2222-3333"
-    },
-    {
-      "name": "Emma Davis",
-      "tel": "010-4444-5555"
-    },
-    {
-      "name": "Mary Jane",
-      "tel": "010-3333-2121"
-    },
-    {
-      "name": "Peter Parker",
-      "tel": "010-7543-6678"
-    }
-  ]
-}
+[
+  {
+    "name": "안유진",
+    "tel": "010-8188-2222"
+  },
+  {
+    "name": "장원영",
+    "tel": "010-9999-4444"
+  },
+  {
+    "name": "김가을",
+    "tel": "010-1111-2626"
+  },
+  {
+    "name": "Sarah Roh",
+    "tel": "010-7777-8888"
+  },
+  {
+    "name": "Ron Bronte",
+    "tel": "070-2422-1111"
+  },
+  {
+    "name": "Michael Smith",
+    "tel": "010-1234-5678"
+  },
+  {
+    "name": "Laura Wilson",
+    "tel": "010-8765-4321"
+  },
+  {
+    "name": "David Brown",
+    "tel": "010-2222-3333"
+  },
+  {
+    "name": "Emma Davis",
+    "tel": "010-4444-5555"
+  },
+  {
+    "name": "Mary Jane",
+    "tel": "010-3333-2121"
+  },
+  {
+    "name": "Peter Parker",
+    "tel": "010-7543-6678"
+  }
+]
