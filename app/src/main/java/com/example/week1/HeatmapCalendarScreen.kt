@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import android.content.Context
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
@@ -30,6 +32,8 @@ import com.example.week1.databinding.ExerciseTimeDialogBinding
 fun CalendarScreen() {
     var showDialog by remember { mutableStateOf(false) }
     Column {
+        HeatmapCalendar()
+        Spacer(modifier = Modifier.height(16.dp))
         Button(
             onClick = { showDialog = true },
             modifier = Modifier.padding(16.dp)
@@ -73,32 +77,6 @@ fun ExerciseTimeDialog(onDismiss: () -> Unit) {
     }
 
     alertDialog.show()
-/*
-    val context = LocalContext.current
-    AndroidView(
-        factory = { context ->
-            LayoutInflater.from(context).inflate(R.layout.exercise_time_dialog, null).apply {
-                findViewById<Button>(R.id.successButton).setOnClickListener {
-                    val calendarView = findViewById<CalendarView>(R.id.calendarView)
-                    val editTime = findViewById<EditText>(R.id.editTime)
-                    val selectedDate = calendarView.date
-                    val exerciseTime = editTime.text.toString()
-
-                    // Process the input values (e.g., save them or use them in the app)
-                    Toast.makeText(
-                        context,
-                        "Date: $selectedDate, Time: $exerciseTime",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
-
-                findViewById<Button>(R.id.declineButton).setOnClickListener {
-                    Toast.makeText(context, "Cancelled", Toast.LENGTH_SHORT).show()
-                }
-            }
-        },
-        modifier = Modifier.fillMaxSize()
-    )*/
 }
 
 @Preview(showBackground = true)
