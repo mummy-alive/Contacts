@@ -12,6 +12,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -90,11 +92,11 @@ fun CalendarScreen() {
         Text(
             text = ("이번주 누적 운동 시간은 ${weeklyExercise / 60}시간 ${weeklyExercise % 60}분 이에요.\n" +
                     "이번달 누적 운동 시간은 ${monthlyExercise / 60}시간 ${monthlyExercise % 60}분 이에요."),
-            color = MaterialTheme.colorScheme.primary,
+            color = MaterialTheme.colorScheme.secondary,
         )
         Text(
             text = ("최고 연속 운동일수: ${maxSteadyDay}일"),
-            color = MaterialTheme.colorScheme.primary,
+            color = MaterialTheme.colorScheme.secondary,
         )
         Spacer(modifier = Modifier.height(32.dp))
         Text(
@@ -111,6 +113,7 @@ fun CalendarScreen() {
         Button(
             onClick = { showDialog = true },
             modifier = Modifier.padding(16.dp),
+            colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.secondary)
         ) {
             Text("운동 시간 기록하기", color = MaterialTheme.colorScheme.background)
         }

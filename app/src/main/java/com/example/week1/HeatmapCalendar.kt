@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,36 +37,37 @@ fun HeatmapCalendar() {
        var dayState by remember { mutableIntStateOf(currentDate.dayOfMonth) }
        var dowState by remember { mutableStateOf(currentDate.dayOfWeek) }*/
 
-
     LazyHorizontalGrid(
         modifier = Modifier
             .height((35 * 7 + 3 * 6 + 20).dp),
         rows = GridCells.Fixed(7)
     ) {
         items(exerciseHistory.history.size) { date ->
-            DayBox(exerciseHistory.history[date], boxSize = boxSize, boxPad = boxPad)
+            DayBox(
+                exerciseHistory.history[date],
+                boxSize = boxSize, boxPad = boxPad, isToday = (currentDate.dayOfYear == date)
+            )
         }
     }
 }
 
 
 @Composable
-fun DayBox(history: History, max: Int = 255, boxSize: Int, boxPad: Int) {
+fun DayBox(history: History, max: Int = 255, boxSize: Int, boxPad: Int, isToday: Boolean) {
     val targetColor = Color(0xFF41C3E4) // Target color
     val ratio = if (max > 0) min(1f, history.exercise.toFloat() / max) else 0f
-    val zeroColor = Color.White
-    //val borderColor = if
+    val zeroColor = Color(0xFF769BA5)
     Box(
         modifier = Modifier
             .padding(boxPad.dp)
-            .border(2.dp, Color.Transparent)
+            .border(2.dp, if(isToday) zeroColor else Color.Transparent, RoundedCornerShape(25))
             .clip(shape = RoundedCornerShape(25))
             .size(boxSize.dp, boxSize.dp)
             .aspectRatio(1.0f)
             .background(
                 if (history.exercise == 0) zeroColor.copy(alpha = 0.02f) else targetColor.copy(
-                    alpha = max(0.02f, ratio)
-                )
+                        alpha = max(0.02f, ratio)
+                    )
             )
         //.alpha(ratio)
     )
