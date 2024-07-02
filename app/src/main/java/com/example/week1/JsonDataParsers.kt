@@ -7,7 +7,9 @@ import com.example.week1.data.History
 import com.example.week1.data.Person
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import java.io.File
 import java.io.IOException
+import android.util.Log
 import java.io.OutputStream
 import java.io.OutputStreamWriter
 
@@ -21,11 +23,20 @@ fun readJsonFile(context: Context, fileName: String): String {
     }
 }
 
-fun writeJsonFile(context: Context, fileName: String, jsonString: String) {
+fun readJsonFileFromInternalStorage(context: Context, fileName: String): String {
+    return try {
+        val file = File(context.filesDir, fileName)
+        file.readText()
+    } catch (ioException: IOException) {
+        ioException.printStackTrace()
+        ""
+    }
+}
+
+fun writeJsonFileToInternalStorage(context: Context, fileName: String, jsonString: String) {
     try {
-        context.openFileOutput(fileName, Context.MODE_PRIVATE).use { output ->
-            output.write(jsonString.toByteArray())
-        }
+        val file = File(context.filesDir, fileName)
+        file.writeText(jsonString)
     } catch (ioException: IOException) {
         ioException.printStackTrace()
     }
@@ -41,8 +52,7 @@ fun parseJsonToPeople(jsonString: String): List<Person> {
 fun parseJsonToDateHistory(jsonString: String): DateHistory {
     val gson = Gson()
     val listType = object : TypeToken<DateHistory>() {}.type
-    val exerciseHistory: DateHistory = gson.fromJson(jsonString, listType)
-    return exerciseHistory
+    return gson.fromJson(jsonString, listType)
 }
 
 fun modifyDateHistoryValue(
@@ -58,9 +68,32 @@ fun modifyDateHistoryValue(
         val historyItem = it.history.find { history ->
             (history.year == year) && (history.month == month) && (history.day == day)
         }
-        historyItem?.exercise = newExerciseValue
+        if (historyItem != null) {
+            historyItem.exercise = newExerciseValue
+        } else {
+            // Create a new History object and add it to the list
+            val newHistory = History(year, month, day, newExerciseValue)
+            dateHistory.history.add(newHistory)
+        }
         return gson.toJson(dateHistory)
     }
-    return jsonString
 }
 
+
+fun copyJsonFileFromAssetsIfNeeded(context: Context, fileName: String) {
+    val file = File(context.filesDir, fileName)
+    if (!file.exists()) {
+        try {
+            context.assets.open(fileName).use { inputStream ->
+                file.outputStream().use { outputStream ->
+                    inputStream.copyTo(outputStream)
+                }
+            }
+            Log.d("JSON", "File copied successfully: ${file.path}")
+        } catch (e: IOException) {
+            Log.e("JSON", "Failed to copy file: ${e.message}")
+        }
+    } else {
+        Log.d("JSON", "File already exists: ${file.path}")
+    }
+}
