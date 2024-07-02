@@ -1,6 +1,5 @@
 package com.example.week1
 
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import androidx.annotation.DrawableRes
@@ -36,9 +35,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.week1.data.Person
 import com.example.week1.ui.theme.Week1Theme
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import java.io.IOException
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
@@ -47,8 +43,8 @@ fun ContactsScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-    val jsonString = readJsonFileContacts(context, "peopleInfo.json")
-    val people = parseJsonToPeopleContacts(jsonString)
+    val jsonString = readJsonFile(context, "peopleInfo.json")
+    val people = parseJsonToPeople(jsonString)
     var selectedPerson by rememberSaveable { mutableStateOf<Person?>(null) }
 
     if (selectedPerson == null) {
@@ -232,22 +228,6 @@ fun ShowCalendar(
             Text(text = "X")
         }
     }
-}
-
-fun readJsonFileContacts(context: Context, fileName: String): String {
-        return try {
-            context.assets.open(fileName).bufferedReader().use { it.readText() }
-        } catch (ioException: IOException) {
-            ioException.printStackTrace()
-            ""
-        }
-    }
-
-fun parseJsonToPeopleContacts(jsonString: String): List<Person> {
-    val gson = Gson()
-    val listType = object : TypeToken<List<Person>>() {}.type
-    val people: List<Person> = gson.fromJson(jsonString, listType)
-    return people.sortedBy { it.name }
 }
 
 fun stringToCalendar(date: String): Calendar {
