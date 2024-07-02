@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Card
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -64,7 +63,7 @@ fun ContactsScreen(
         }
     }
     else {
-        ShowCalendar { date ->
+        ShowCalendar (selectedPerson!!.recentExercise) { date ->
             nameToRecentExercise = nameToRecentExercise + (selectedPerson!!.name to date)
             selectedPerson = null
         }
@@ -95,9 +94,6 @@ fun ContactItem(
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
-//    Surface(onClick = onClick) {
-//        Text(text = person.name)
-//    }
     val context = LocalContext.current
     person.imageResourceId = nameToResourceIdMap[person.name] ?: R.drawable.default_image
     person.recentExercise = nameToRecentExercise[person.name] ?: "기록 없음"
@@ -169,14 +165,20 @@ fun RecentExercise(
         color = MaterialTheme.colorScheme.secondaryContainer,
         contentColor = MaterialTheme.colorScheme.onSecondaryContainer
     ) {
-        if (recentExercise == "기록 없음") {
-            Text(text = "기록 없음")
-        } else {
+        if (recentExercise != "기록 없음") {
             val today = Calendar.getInstance()
             val recent = stringToCalendar(recentExercise)
-
             val diffDays = TimeUnit.MILLISECONDS.toDays(today.timeInMillis - recent.timeInMillis)
-            Text(text = "${diffDays}일 전")
+            if (diffDays == 0L) {
+                Text(text = "오늘")
+            }
+            else {
+                Text(text = "${diffDays}일 전")
+            }
+
+        } else {
+            Text(text = "기록 없음")
+
         }
     }
 }
@@ -184,26 +186,41 @@ fun RecentExercise(
 
 @Composable
 fun ShowCalendar(
+    selectedDateString: String,
     onClick: (String) -> Unit
 ) {
-    val selectedDate = Calendar.getInstance()
-    val year = selectedDate.get(Calendar.YEAR)
-    val month = selectedDate.get(Calendar.MONTH)
-    val day = selectedDate.get(Calendar.DAY_OF_MONTH)
-    var date by remember { mutableStateOf("$year/${month + 1}/$day") }
-    Column {
+    var selectedDate = Calendar.getInstance()
+    if (selectedDateString != "기록 없음") {
+        selectedDate = stringToCalendar(selectedDateString)
+    }
+    val today = Calendar.getInstance()
+    var date by remember { mutableStateOf("최근 함께 운동한 날이 언제인가요?") }
+    Column(
+        modifier = Modifier.padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(text = date)
         AndroidView(
             factory = { context ->
                 android.widget.CalendarView(context).apply { setDate(selectedDate.timeInMillis) }
             },
             update = { calendarView ->
-                calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+                calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
                     date = "$year/${month + 1}/$dayOfMonth"
-                    onClick(date)
+                    val dateDate = stringToCalendar(date)
+                    if (
+                        TimeUnit.MILLISECONDS.toDays(today.timeInMillis - dateDate.timeInMillis) >= 0
+                        )
+                    {
+                        onClick(date)
+                    }
+                    else {
+                        view.apply { setDate(selectedDate.timeInMillis) }
+                        date = "오늘 이전의 날을 선택해 주세요"
+                    }
                 }
             }
         )
-        Text(text = date)
     }
 }
 
@@ -229,14 +246,6 @@ fun stringToCalendar(date: String): Calendar {
     set.set(parts[0].toInt(), parts[1].toInt() - 1, parts[2].toInt())
     return set
 }
-
-fun calendarToString(date: Calendar): String {
-    val year = date.get(Calendar.YEAR)
-    val month = date.get(Calendar.MONTH) + 1
-    val day = date.get(Calendar.DAY_OF_MONTH)
-    return "$year/${month+1}/$day"
-}
-
 
 @Preview(showBackground = true)
 @Composable
