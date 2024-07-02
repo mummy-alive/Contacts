@@ -4,18 +4,23 @@ import android.content.Intent
 import android.net.Uri
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -26,6 +31,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
@@ -48,19 +54,30 @@ fun ContactsScreen(
     var selectedPerson by rememberSaveable { mutableStateOf<Person?>(null) }
 
     if (selectedPerson == null) {
-        LazyColumn(modifier = modifier.padding(vertical = 4.dp)) {
-            itemsIndexed(people) {_, person ->
-                ContactItem(
-                    person = person,
-                    modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
-                ) {
-                    selectedPerson = person
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            modifier = modifier
+                .background(MaterialTheme.colorScheme.background)
+
+        ){
+            Text(
+                text = "친구",
+                color = Color.White
+            )
+            LazyColumn {
+                itemsIndexed(people) {_, person ->
+                    ContactItem(
+                        person = person,
+                        modifier = Modifier.padding(dimensionResource(R.dimen.padding_small))
+                    ) {
+                        selectedPerson = person
+                    }
                 }
             }
         }
     }
     else {
-        ShowCalendar (selectedPerson!!.recentExercise) { date ->
+        ShowCalendar (selectedPerson!!.recentExercise, modifier) { date ->
             nameToRecentExercise = nameToRecentExercise + (selectedPerson!!.name to date)
             selectedPerson = null
         }
@@ -96,6 +113,7 @@ fun ContactItem(
     person.recentExercise = nameToRecentExercise[person.name] ?: "기록 없음"
     Card(
         modifier = modifier,
+        colors = CardDefaults.cardColors(MaterialTheme.colorScheme.surface),
         onClick = {
             val u = Uri.parse("tel:${person.tel}")
             val i = Intent(Intent.ACTION_DIAL, u)
@@ -141,10 +159,11 @@ fun PersonInformation(
     Column(modifier = modifier) {
         Text(
             text = personName,
-            modifier = Modifier.padding(top = dimensionResource(R.dimen.padding_small))
+            color = Color.White,
         )
         Text(
-            text = personTel
+            text = personTel,
+            color = MaterialTheme.colorScheme.primary
         )
     }
 }
@@ -155,26 +174,33 @@ fun RecentExercise(
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
-    Surface(
+    var varRecentExercise = recentExercise
+    Card(
+        colors = CardDefaults.cardColors(MaterialTheme.colorScheme.surface),
+        modifier = modifier
+            .width(120.dp)
+            .height(50.dp),
         onClick = onClick,
-        modifier = modifier,
-        color = MaterialTheme.colorScheme.secondaryContainer,
-        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
     ) {
-        if (recentExercise != "기록 없음") {
-            val today = Calendar.getInstance()
-            val recent = stringToCalendar(recentExercise)
-            val diffDays = TimeUnit.MILLISECONDS.toDays(today.timeInMillis - recent.timeInMillis)
-            if (diffDays == 0L) {
-                Text(text = "오늘")
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            if (recentExercise != "기록 없음") {
+                val today = Calendar.getInstance()
+                val recent = stringToCalendar(recentExercise)
+                val diffDays =
+                    TimeUnit.MILLISECONDS.toDays(today.timeInMillis - recent.timeInMillis)
+                varRecentExercise = if (diffDays == 0L) {
+                    "오늘"
+                } else {
+                    "${diffDays}일 전"
+                }
             }
-            else {
-                Text(text = "${diffDays}일 전")
-            }
-
-        } else {
-            Text(text = "기록 없음")
-
+            Text(
+                text = varRecentExercise,
+                color = MaterialTheme.colorScheme.tertiary
+            )
         }
     }
 }
@@ -183,6 +209,7 @@ fun RecentExercise(
 @Composable
 fun ShowCalendar(
     selectedDateString: String,
+    modifier: Modifier = Modifier,
     onClick: (String) -> Unit
 ) {
     var selectedDate = Calendar.getInstance()
@@ -192,7 +219,7 @@ fun ShowCalendar(
     val today = Calendar.getInstance()
     var date by remember { mutableStateOf("최근 함께 운동한 날이 언제인가요?") }
     Column(
-        modifier = Modifier.padding(16.dp),
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = date)

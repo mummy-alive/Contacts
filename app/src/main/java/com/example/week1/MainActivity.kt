@@ -72,7 +72,9 @@ fun TabPreview() {
 @Preview(showBackground = true)
 @Composable
 fun CalendarPreview() {
-    Week1Theme {
+    Week1Theme(
+        darkTheme = false
+    ) {
         CalendarScreen()
     }
 }
