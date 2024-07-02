@@ -47,8 +47,8 @@ fun ContactsScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
-    val jsonString = readJsonFile(context, "peopleInfo.json")
-    val people = parseJsonToPeople(jsonString)
+    val jsonString = readJsonFileContacts(context, "peopleInfo.json")
+    val people = parseJsonToPeopleContacts(jsonString)
     var selectedPerson by rememberSaveable { mutableStateOf<Person?>(null) }
 
     if (selectedPerson == null) {
@@ -133,7 +133,6 @@ fun PersonIcon(
         contentScale = ContentScale.Crop,
         painter = painterResource(personIcon),
         contentDescription = null
-
     )
 }
 
@@ -235,7 +234,7 @@ fun ShowCalendar(
     }
 }
 
-fun readJsonFile(context: Context, fileName: String): String {
+fun readJsonFileContacts(context: Context, fileName: String): String {
         return try {
             context.assets.open(fileName).bufferedReader().use { it.readText() }
         } catch (ioException: IOException) {
@@ -244,7 +243,7 @@ fun readJsonFile(context: Context, fileName: String): String {
         }
     }
 
-fun parseJsonToPeople(jsonString: String): List<Person> {
+fun parseJsonToPeopleContacts(jsonString: String): List<Person> {
     val gson = Gson()
     val listType = object : TypeToken<List<Person>>() {}.type
     val people: List<Person> = gson.fromJson(jsonString, listType)
