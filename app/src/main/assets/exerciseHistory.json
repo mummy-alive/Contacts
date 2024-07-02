@@ -1,5 +1,4 @@
 {
-  "maxData": 290,
   "history": [
     {
       "year": 2024,
@@ -36,8 +35,2172 @@
       "month": 1,
       "day": 6,
       "exercise": 56
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 7,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 8,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 9,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 10,
+      "exercise": 4
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 11,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 12,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 13,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 14,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 15,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 16,
+      "exercise": 70
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 17,
+      "exercise": 40
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 18,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 19,
+      "exercise": 22
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 20,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 21,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 22,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 23,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 24,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 25,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 26,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 27,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 28,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 29,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 30,
+      "exercise": 195
+    },
+    {
+      "year": 2024,
+      "month": 1,
+      "day": 31,
+      "exercise": 90
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 1,
+      "exercise": 30
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 2,
+      "exercise": 65
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 3,
+      "exercise": 22
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 4,
+      "exercise": 55
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 5,
+      "exercise": 55
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 6,
+      "exercise": 70
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 7,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 8,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 9,
+      "exercise": 22
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 10,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 11,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 12,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 13,
+      "exercise": 140
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 14,
+      "exercise": 66
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 15,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 16,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 17,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 18,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 19,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 20,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 21,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 22,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 23,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 24,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 25,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 26,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 27,
+      "exercise": 30
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 28,
+      "exercise": 94
+    },
+    {
+      "year": 2024,
+      "month": 2,
+      "day": 29,
+      "exercise": 100
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 1,
+      "exercise": 20
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 2,
+      "exercise": 66
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 3,
+      "exercise": 102
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 4,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 5,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 6,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 7,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 8,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 9,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 10,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 11,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 12,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 13,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 14,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 15,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 16,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 17,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 18,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 19,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 20,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 21,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 22,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 23,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 24,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 25,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 26,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 27,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 28,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 29,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 30,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 3,
+      "day": 31,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 1,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 2,
+      "exercise": 62
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 3,
+      "exercise": 100
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 4,
+      "exercise": 150
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 5,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 6,
+      "exercise": 63
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 7,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 8,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 9,
+      "exercise": 100
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 10,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 11,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 12,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 13,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 14,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 15,
+      "exercise": 200
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 16,
+      "exercise": 100
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 17,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 18,
+      "exercise": 30
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 19,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 20,
+      "exercise": 77
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 21,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 22,
+      "exercise": 50
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 23,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 24,
+      "exercise": 200
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 25,
+      "exercise": 150
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 26,
+      "exercise": 120
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 27,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 28,
+      "exercise": 63
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 29,
+      "exercise": 100
+    },
+    {
+      "year": 2024,
+      "month": 4,
+      "day": 30,
+      "exercise": 25
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 1,
+      "exercise": 55
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 1,
+      "exercise": 41
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 2,
+      "exercise": 107
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 3,
+      "exercise": 214
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 4,
+      "exercise": 235
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 5,
+      "exercise": 44
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 6,
+      "exercise": 169
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 7,
+      "exercise": 3
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 8,
+      "exercise": 33
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 9,
+      "exercise": 187
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 10,
+      "exercise": 239
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 11,
+      "exercise": 95
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 12,
+      "exercise": 95
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 13,
+      "exercise": 76
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 14,
+      "exercise": 252
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 15,
+      "exercise": 16
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 16,
+      "exercise": 236
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 17,
+      "exercise": 190
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 18,
+      "exercise": 212
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 19,
+      "exercise": 237
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 20,
+      "exercise": 81
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 21,
+      "exercise": 6
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 22,
+      "exercise": 69
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 23,
+      "exercise": 77
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 24,
+      "exercise": 153
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 25,
+      "exercise": 37
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 26,
+      "exercise": 142
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 27,
+      "exercise": 81
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 28,
+      "exercise": 101
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 29,
+      "exercise": 83
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 30,
+      "exercise": 5
+    },
+    {
+      "year": 2024,
+      "month": 5,
+      "day": 31,
+      "exercise": 92
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 1,
+      "exercise": 51
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 2,
+      "exercise": 236
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 3,
+      "exercise": 63
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 4,
+      "exercise": 84
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 5,
+      "exercise": 22
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 6,
+      "exercise": 167
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 7,
+      "exercise": 34
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 8,
+      "exercise": 205
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 9,
+      "exercise": 204
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 10,
+      "exercise": 143
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 11,
+      "exercise": 96
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 12,
+      "exercise": 212
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 13,
+      "exercise": 243
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 14,
+      "exercise": 78
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 15,
+      "exercise": 74
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 16,
+      "exercise": 96
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 17,
+      "exercise": 61
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 18,
+      "exercise": 203
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 19,
+      "exercise": 238
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 20,
+      "exercise": 47
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 21,
+      "exercise": 104
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 22,
+      "exercise": 22
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 23,
+      "exercise": 117
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 24,
+      "exercise": 147
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 25,
+      "exercise": 109
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 26,
+      "exercise": 53
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 27,
+      "exercise": 51
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 28,
+      "exercise": 244
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 29,
+      "exercise": 13
+    },
+    {
+      "year": 2024,
+      "month": 6,
+      "day": 30,
+      "exercise": 76
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 1,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 2,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 3,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 4,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 5,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 6,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 7,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 8,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 9,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 10,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 11,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 12,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 13,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 14,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 15,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 16,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 17,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 18,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 19,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 20,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 21,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 22,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 23,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 24,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 25,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 26,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 27,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 28,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 29,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 30,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 7,
+      "day": 31,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 1,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 2,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 3,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 4,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 5,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 6,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 7,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 8,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 9,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 10,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 11,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 12,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 13,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 14,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 15,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 16,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 17,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 18,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 19,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 20,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 21,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 22,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 23,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 24,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 25,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 26,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 27,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 28,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 29,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 30,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 8,
+      "day": 31,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 1,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 2,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 3,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 4,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 5,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 6,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 7,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 8,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 9,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 10,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 11,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 12,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 13,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 14,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 15,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 16,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 17,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 18,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 19,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 20,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 21,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 22,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 23,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 24,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 25,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 26,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 27,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 28,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 29,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 9,
+      "day": 30,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 1,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 2,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 3,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 4,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 5,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 6,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 7,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 8,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 9,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 10,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 11,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 12,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 13,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 14,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 15,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 16,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 17,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 18,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 19,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 20,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 21,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 22,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 23,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 24,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 25,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 26,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 27,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 28,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 29,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 30,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 10,
+      "day": 31,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 1,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 2,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 3,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 4,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 5,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 6,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 7,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 8,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 9,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 10,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 11,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 12,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 13,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 14,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 15,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 16,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 17,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 18,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 19,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 20,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 21,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 22,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 23,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 24,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 25,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 26,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 27,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 28,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 29,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 11,
+      "day": 30,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 1,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 2,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 3,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 4,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 5,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 6,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 7,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 8,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 9,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 10,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 11,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 12,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 13,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 14,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 15,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 16,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 17,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 18,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 19,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 20,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 21,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 22,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 23,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 24,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 25,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 26,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 27,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 28,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 29,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 30,
+      "exercise": 0
+    },
+    {
+      "year": 2024,
+      "month": 12,
+      "day": 31,
+      "exercise": 0
     }
-
   ]
-
 }
