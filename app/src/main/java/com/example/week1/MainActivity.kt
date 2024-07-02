@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    TabScreen(modifier = Modifier.fillMaxSize())
+                    TabScreen()
                 }
             }
         }
@@ -37,24 +37,26 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TabScreen(
-    modifier: Modifier = Modifier
 ) {
     var tabIndex by rememberSaveable { mutableIntStateOf(0) }
     val tabs = listOf("Contacts", "Photo", "Calendar")
 
-    Column(modifier = modifier.fillMaxWidth()) {
-        TabRow(selectedTabIndex = tabIndex) {
+    Column{
+        when (tabIndex) {
+            0 -> ContactsScreen(modifier = Modifier.fillMaxSize().weight(1f))
+            1 -> PhotoScreen(modifier = Modifier.fillMaxSize().weight(1f))
+            2 -> CalendarScreen()
+        }
+        TabRow(
+            selectedTabIndex = tabIndex,
+            modifier = Modifier.fillMaxWidth()
+        ) {
             tabs.forEachIndexed { index, title ->
                 Tab(text = { Text(title) },
                     selected = tabIndex == index,
                     onClick = { tabIndex = index }
                 )
             }
-        }
-        when (tabIndex) {
-            0 -> ContactsScreen()
-            1 -> PhotoScreen()
-            2 -> CalendarScreen()
         }
     }
 }
@@ -63,7 +65,7 @@ fun TabScreen(
 @Composable
 fun TabPreview() {
     Week1Theme {
-        TabScreen(modifier = Modifier.fillMaxSize())
+        TabScreen()
     }
 }
 
