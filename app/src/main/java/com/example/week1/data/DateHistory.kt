@@ -8,7 +8,7 @@ data class History(
         var exercise: Int
 )
 
+
 data class DateHistory(
-        var maxData :Int,
-        var history: List<History>
+        var history: MutableList<History>
         )

@@ -18,24 +18,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.LocalContext
 import com.example.week1.data.DateHistory
 import com.example.week1.data.History
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import java.util.Date
 
 @Composable
 fun HeatmapCalendar() {
     val context = LocalContext.current
-    val jsonString = readJsonFile(context, "exerciseHistory.json")
+    val jsonString = readJsonFileFromInternalStorage(context, "exerciseHistory.json")
     val exerciseHistory: DateHistory = parseJsonToDateHistory(jsonString)
-    /*var exerciseHistory: List<Int> = /*(0..1000).toList()*/
-        listOf(33, 50, 104, 0, 87, 300, 0, 130, 65, 91, 33, 50, 104, 0, 87, 300, 0, 130, 65, 91,
-            33, 50, 104, 0, 87, 300, 0, 130, 65, 91, 33, 50, 104, 0, 87, 300, 0, 130, 65, 91,
-            33, 50, 104, 0, 87, 51, 0, 130, 65, 0, 33, 50, 14, 0, 87, 330, 0, 34, 65, 91, 33, 50, 104, 0, 87, 300, 0, 130, 65, 91, 33, 50, 104, 0, 87, 300, 0, 130, 65, 91,
-            33, 50, 104, 0, 87, 300, 0, 130, 65, 91, 33, 50, 104, 0, 87, 300, 0, 130, 65, 91,
-            33, 50, 104, 0, 87, 51, 0, 130, 65, 0, 33, 50, 14, 0, 87, 330, 0, 34, 65, 91,33, 50, 104, 0, 87, 300, 0, 130, 65, 91, 33, 50, 104, 0, 87, 300, 0, 130, 65, 91,
-            33, 50, 104, 0, 87, 300, 0, 130, 65, 91, 33, 50, 104, 0, 87, 300, 0, 130, 65, 91,
-            33, 50, 104, 0, 87, 51, 0, 130, 65, 0, 33, 50, 14, 0, 87, 330, 0, 34, 65, 91,)*/
-    val maxHistory: Int = exerciseHistory.maxData
     LazyHorizontalGrid(
         modifier = Modifier
             .fillMaxWidth()
@@ -43,7 +31,7 @@ fun HeatmapCalendar() {
         rows = GridCells.Fixed(7)
     ) {
         items(exerciseHistory.history.size) { date ->
-            DayBox(exerciseHistory.history[date], maxHistory)
+            DayBox(exerciseHistory.history[date])
         }
     }
 }
