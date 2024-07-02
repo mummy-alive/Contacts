@@ -91,7 +91,7 @@ fun TabScreen(
                 .fillMaxSize()
                 .weight(1f)
             )
-            1 -> PhotoScreen(
+            1 -> WorkoutScreen(
                 modifier = Modifier
                 .fillMaxSize()
                 .weight(1f)
