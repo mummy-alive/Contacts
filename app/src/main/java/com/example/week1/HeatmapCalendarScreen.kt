@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 fun CalendarScreen() {
     val context = LocalContext.current
     var showDialog by remember { mutableStateOf(false) }
+    var refreshCalendar by remember { mutableStateOf(false) }
 
     copyJsonFileFromAssetsIfNeeded(context, "exerciseHistory.json")
 
@@ -42,25 +43,49 @@ fun CalendarScreen() {
     if (showDialog) {
         ExerciseTimeDialog(
             onDismiss = { showDialog = false },
-            onSave = {date, exerciseTime -> StoreExerciseOnJson(context, date, exerciseTime)})
+            onSave = { year, month, day, exerciseTime ->
+                StoreExerciseOnJson(
+                    context,
+                    year,
+                    month,
+                    day,
+                    exerciseTime
+                )
+                refreshCalendar != refreshCalendar
+            })
     }
 }
 
 @Composable
-fun ExerciseTimeDialog(onDismiss: () -> Unit, onSave:(Int, Int) -> Unit) {
+fun ExerciseTimeDialog(onDismiss: () -> Unit, onSave: (Int, Int, Int, Int) -> Unit) {
     var context = LocalContext.current
     val dialogView = LayoutInflater.from(context).inflate(R.layout.exercise_time_dialog, null)
     val alertDialog = AlertDialog.Builder(context)
         .setView(dialogView)
         .setOnDismissListener { onDismiss() }
         .create()
-    dialogView.findViewById<android.widget.Button>(R.id.successButton).setOnClickListener {
+
+        var selectedDate by remember { mutableStateOf(java.util.Calendar.getInstance().timeInMillis) }
         val calendarView = dialogView.findViewById<CalendarView>(R.id.calendarView)
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            val calendar = java.util.Calendar.getInstance().apply {
+                set(year, month, dayOfMonth)
+            }
+            selectedDate = calendar.timeInMillis
+        }
+
+    dialogView.findViewById<android.widget.Button>(R.id.successButton).setOnClickListener {
         val editTime = dialogView.findViewById<EditText>(R.id.editTime)
-        val selectedDate = calendarView.date.toInt()
         val exerciseTime = editTime.text.toString().toIntOrNull()
         if (exerciseTime != null) {
-            onSave(selectedDate, exerciseTime)
+            val calendar = java.util.Calendar.getInstance().apply {
+                timeInMillis = selectedDate
+            }
+            val year = calendar.get(java.util.Calendar.YEAR)
+            val month = calendar.get(java.util.Calendar.MONTH) + 1 // Months are 0-based
+            val day = calendar.get(java.util.Calendar.DAY_OF_MONTH)
+
+            onSave(year, month, day, exerciseTime)
             Toast.makeText(
                 context,
                 "성공적으로 저장되었습니다.",
@@ -80,12 +105,12 @@ fun ExerciseTimeDialog(onDismiss: () -> Unit, onSave:(Int, Int) -> Unit) {
     alertDialog.show()
 }
 
-fun StoreExerciseOnJson(context: Context, date: Int, exerciseTime: Int){
+fun StoreExerciseOnJson(
+    context: Context,
+    year: Int, month: Int, day: Int, exerciseTime: Int
+) {
     val fileName = "exerciseHistory.json"
-    val year:Int = date/10000
-    val month = (date%10000)/100
-    val day = date%100
-    val jsonString = readJsonFile(context, fileName)
+    val jsonString = readJsonFileFromInternalStorage(context, fileName)
 
     val outputString = modifyDateHistoryValue(jsonString, year, month, day, exerciseTime)
     writeJsonFileToInternalStorage(context, fileName, outputString)

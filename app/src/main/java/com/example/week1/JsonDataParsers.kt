@@ -65,7 +65,7 @@ fun modifyDateHistoryValue(
     val gson = Gson()
     val dateHistory = parseJsonToDateHistory(jsonString)
     dateHistory.let {
-        val historyItem = it.history.find { history ->
+        val historyItem = dateHistory.history.find { history ->
             (history.year == year) && (history.month == month) && (history.day == day)
         }
         if (historyItem != null) {
