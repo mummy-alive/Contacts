@@ -13,11 +13,15 @@ import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.LocalContext
+import androidx.core.graphics.ColorUtils
 import com.example.week1.data.DateHistory
 import com.example.week1.data.History
+import kotlin.math.max
 
 @Composable
 fun HeatmapCalendar() {
@@ -37,8 +41,8 @@ fun HeatmapCalendar() {
 }
 
 @Composable
-fun DayBox(history: History, max: Int=255) {
-    val color = calculateColor(history.exercise, max)
+fun DayBox(history: History, max: Int = 255) {
+    val color = calculateColor(max(max, history.exercise), max)
 
     Box(
         modifier = Modifier
@@ -47,16 +51,27 @@ fun DayBox(history: History, max: Int=255) {
             .size(20.dp)
             .aspectRatio(1.0f)
             .background(color)
-    ) {
-    }
+    )
 }
 
-@Composable
 private fun calculateColor(intenseAmount: Int, max: Int): Color {
+    val baseColor = Color(0xFF252D3A) // Starting color (gray)
+    //val targetColor = Color(0xFF41C3E4)
+    val targetColorInt = 0xFF41C3E4.toInt() // Convert to Int for ColorUtils
     val darkness = if (max > 0) intenseAmount.toFloat() / max else 0f
+
     return if (intenseAmount == 0) {
-        Color.LightGray
+        baseColor
     } else {
-        Color(0f, (1 - darkness).coerceIn(0f, 1f), 0f)
+        // Convert targetColor to HSL
+        val hsl = FloatArray(3)
+        ColorUtils.colorToHSL(targetColorInt, hsl)
+
+        // Adjust saturation based on darkness (0 to 1)
+        hsl[1] = hsl[1] * darkness
+
+        // Convert back to RGB and return as Color
+        val adjustedColorInt = ColorUtils.HSLToColor(hsl)
+        Color(adjustedColorInt)
     }
 }
