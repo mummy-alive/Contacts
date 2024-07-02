@@ -27,6 +27,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.week1.databinding.ExerciseTimeDialogBinding
+import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 
 @Composable
 fun CalendarScreen() {
@@ -44,7 +46,6 @@ fun CalendarScreen() {
     if (showDialog) {
         ExerciseTimeDialog(onDismiss = { showDialog = false })
     }
-
 }
 
 @Composable
@@ -55,13 +56,15 @@ fun ExerciseTimeDialog(onDismiss: () -> Unit) {
         .setView(dialogView)
         .setOnDismissListener { onDismiss() }
         .create()
-
+    var selectedDate: Int = 0
+    var exerciseTime: String = ""
+    var isChangedFlg:Boolean = false
     dialogView.findViewById<android.widget.Button>(R.id.successButton).setOnClickListener {
         val calendarView = dialogView.findViewById<CalendarView>(R.id.calendarView)
         val editTime = dialogView.findViewById<EditText>(R.id.editTime)
-        val selectedDate = calendarView.date
-        val exerciseTime = editTime.text.toString()
-
+        selectedDate = calendarView.date.toInt()
+        exerciseTime = editTime.text.toString()
+        isChangedFlg = true
         // Process the input values (e.g., save them or use them in the app)
         Toast.makeText(
             context,
@@ -75,8 +78,23 @@ fun ExerciseTimeDialog(onDismiss: () -> Unit) {
         Toast.makeText(context, "저장을 취소하였습니다.", Toast.LENGTH_SHORT).show()
         alertDialog.dismiss()
     }
+    if(isChangedFlg)
+        StoreExerciseOnJson(selectedDate, exerciseTime.toInt())
+
 
     alertDialog.show()
+}
+
+@Composable
+fun StoreExerciseOnJson(date: Int, exerciseTime: Int){
+    val context = LocalContext.current
+    val year:Int = date/10000
+    val month = (date%10000)/100
+    val day = date%100
+    val jsonString = readJsonFile(context, "exerciseHistory.json")
+
+    val outputString = modifyDateHistoryValue(jsonString, year, month, day, exerciseTime)
+    val a:Int = 0
 }
 
 @Preview(showBackground = true)
