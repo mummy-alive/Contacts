@@ -2,6 +2,7 @@ package com.example.week1
 
 import android.content.Intent
 import android.net.Uri
+import android.view.ContextThemeWrapper
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -44,6 +45,25 @@ import com.example.week1.ui.theme.Week1Theme
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
+
+val nameToResourceIdMap = mapOf(
+    "안유진" to R.drawable.ayj,
+    "장원영" to R.drawable.jwy,
+    "김가을" to R.drawable.kge,
+    "나오이 레이" to R.drawable.rei,
+    "김지원" to R.drawable.kjw,
+    "이현서" to R.drawable.lhs,
+    "강해린" to R.drawable.khr,
+    "김민지" to R.drawable.kmj,
+    "모지혜" to R.drawable.mzh,
+    "팜하니" to R.drawable.phn,
+    "이혜인" to R.drawable.lhi
+)
+
+var nameToRecentExercise = mapOf(
+    "안유진" to "2024/06/24"
+)
+
 @Composable
 fun ContactsScreen(
     modifier: Modifier = Modifier
@@ -84,24 +104,6 @@ fun ContactsScreen(
     }
 }
 
-val nameToResourceIdMap = mapOf(
-    "안유진" to R.drawable.ayj,
-    "장원영" to R.drawable.jwy,
-    "김가을" to R.drawable.kge,
-    "나오이 레이" to R.drawable.rei,
-    "김지원" to R.drawable.kjw,
-    "이현서" to R.drawable.lhs,
-    "강해린" to R.drawable.khr,
-    "김민지" to R.drawable.kmj,
-    "모지혜" to R.drawable.mzh,
-    "팜하니" to R.drawable.phn,
-    "이혜인" to R.drawable.lhi
-)
-
-var nameToRecentExercise = mapOf(
-    "안유진" to "2024/06/24"
-)
-
 @Composable
 fun ContactItem(
     person: Person,
@@ -113,7 +115,7 @@ fun ContactItem(
     person.recentExercise = nameToRecentExercise[person.name] ?: "기록 없음"
     Card(
         modifier = modifier,
-        colors = CardDefaults.cardColors(MaterialTheme.colorScheme.surface),
+        colors = CardDefaults.cardColors(MaterialTheme.colorScheme.background),
         onClick = {
             val u = Uri.parse("tel:${person.tel}")
             val i = Intent(Intent.ACTION_DIAL, u)
@@ -163,7 +165,7 @@ fun PersonInformation(
         )
         Text(
             text = personTel,
-            color = MaterialTheme.colorScheme.primary
+            color = MaterialTheme.colorScheme.secondary
         )
     }
 }
@@ -176,7 +178,7 @@ fun RecentExercise(
 ) {
     var varRecentExercise = recentExercise
     Card(
-        colors = CardDefaults.cardColors(MaterialTheme.colorScheme.surface),
+        colors = CardDefaults.cardColors(MaterialTheme.colorScheme.background),
         modifier = modifier
             .width(120.dp)
             .height(50.dp),
@@ -225,7 +227,12 @@ fun ShowCalendar(
         Text(text = date)
         AndroidView(
             factory = { context ->
-                android.widget.CalendarView(context).apply { setDate(selectedDate.timeInMillis) }
+                val themedContext = ContextThemeWrapper(context, R.style.CustomCalendar)
+                android.widget.CalendarView(themedContext).apply {
+                    dateTextAppearance = R.style.CustomDate
+                    weekDayTextAppearance = R.style.CustomWeek
+                    setDate(selectedDate.timeInMillis)
+                }
             },
             update = { calendarView ->
                 calendarView.setOnDateChangeListener { view, year, month, dayOfMonth ->
@@ -238,7 +245,11 @@ fun ShowCalendar(
                         onClick(date)
                     }
                     else {
-                        view.apply { setDate(selectedDate.timeInMillis) }
+                        view.apply {
+                            dateTextAppearance = R.style.CustomDate
+                            weekDayTextAppearance = R.style.CustomWeek
+                            setDate(selectedDate.timeInMillis)
+                        }
                         date = "오늘 혹은 이전의 날을 선택해 주세요"
                     }
                 }
