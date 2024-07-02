@@ -27,11 +27,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.week1.databinding.ExerciseTimeDialogBinding
+import kotlinx.coroutines.selects.select
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
 
 @Composable
 fun CalendarScreen() {
+    val context = LocalContext.current
     var showDialog by remember { mutableStateOf(false) }
     Column {
         HeatmapCalendar()
@@ -44,33 +46,34 @@ fun CalendarScreen() {
         }
     }
     if (showDialog) {
-        ExerciseTimeDialog(onDismiss = { showDialog = false })
+        ExerciseTimeDialog(
+            onDismiss = { showDialog = false },
+            onSave = {date, exerciseTime -> StoreExerciseOnJson(context, date, exerciseTime)})
     }
 }
 
 @Composable
-fun ExerciseTimeDialog(onDismiss: () -> Unit) {
+fun ExerciseTimeDialog(onDismiss: () -> Unit, onSave:(Int, Int) -> Unit) {
     var context = LocalContext.current
     val dialogView = LayoutInflater.from(context).inflate(R.layout.exercise_time_dialog, null)
     val alertDialog = AlertDialog.Builder(context)
         .setView(dialogView)
         .setOnDismissListener { onDismiss() }
         .create()
-    var selectedDate: Int = 0
-    var exerciseTime: String = ""
-    var isChangedFlg:Boolean = false
     dialogView.findViewById<android.widget.Button>(R.id.successButton).setOnClickListener {
         val calendarView = dialogView.findViewById<CalendarView>(R.id.calendarView)
         val editTime = dialogView.findViewById<EditText>(R.id.editTime)
-        selectedDate = calendarView.date.toInt()
-        exerciseTime = editTime.text.toString()
-        isChangedFlg = true
+        val selectedDate = calendarView.date.toInt()
+        val exerciseTime = editTime.text.toString().toIntOrNull()
+        if (exerciseTime != null) {
+            onSave(selectedDate, exerciseTime)
+            Toast.makeText(
+                context,
+                "성공적으로 저장되었습니다.",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
         // Process the input values (e.g., save them or use them in the app)
-        Toast.makeText(
-            context,
-            "성공적으로 저장되었습니다.",
-            Toast.LENGTH_SHORT
-        ).show()
         alertDialog.dismiss()
     }
 
@@ -78,23 +81,18 @@ fun ExerciseTimeDialog(onDismiss: () -> Unit) {
         Toast.makeText(context, "저장을 취소하였습니다.", Toast.LENGTH_SHORT).show()
         alertDialog.dismiss()
     }
-    if(isChangedFlg)
-        StoreExerciseOnJson(selectedDate, exerciseTime.toInt())
 
 
     alertDialog.show()
 }
 
-@Composable
-fun StoreExerciseOnJson(date: Int, exerciseTime: Int){
-    val context = LocalContext.current
+fun StoreExerciseOnJson(context: Context, date: Int, exerciseTime: Int){
     val year:Int = date/10000
     val month = (date%10000)/100
     val day = date%100
     val jsonString = readJsonFile(context, "exerciseHistory.json")
 
     val outputString = modifyDateHistoryValue(jsonString, year, month, day, exerciseTime)
-    val a:Int = 0
 }
 
 @Preview(showBackground = true)
