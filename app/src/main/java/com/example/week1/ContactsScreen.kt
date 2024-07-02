@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -216,11 +217,21 @@ fun ShowCalendar(
                     }
                     else {
                         view.apply { setDate(selectedDate.timeInMillis) }
-                        date = "오늘 이전의 날을 선택해 주세요"
+                        date = "오늘 혹은 이전의 날을 선택해 주세요"
                     }
                 }
             }
         )
+        Button(
+            onClick = {
+                date = "기록 없음"
+                onClick(date)
+            },
+            modifier = Modifier
+                .padding(top = 16.dp)
+        ) {
+            Text(text = "X")
+        }
     }
 }
 
