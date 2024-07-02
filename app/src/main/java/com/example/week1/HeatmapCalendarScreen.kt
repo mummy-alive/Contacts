@@ -7,12 +7,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import android.content.Context
-import android.graphics.Paint.Align
-import androidx.compose.foundation.border
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -102,7 +98,7 @@ fun CalendarScreen() {
         )
         Spacer(modifier = Modifier.height(32.dp))
         Text(
-            text = quotations[(0..quotations.size-1).random()],
+            text = quotations[(0..quotations.size - 1).random()],
             fontStyle = FontStyle.Italic,
 
             style = TextStyle(
