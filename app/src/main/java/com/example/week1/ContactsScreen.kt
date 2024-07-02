@@ -2,6 +2,7 @@ package com.example.week1
 
 import android.content.Intent
 import android.net.Uri
+import android.view.ContextThemeWrapper
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -226,7 +227,8 @@ fun ShowCalendar(
         Text(text = date)
         AndroidView(
             factory = { context ->
-                android.widget.CalendarView(context).apply {
+                val themedContext = ContextThemeWrapper(context, R.style.CustomCalendar)
+                android.widget.CalendarView(themedContext).apply {
                     dateTextAppearance = R.style.CustomDate
                     weekDayTextAppearance = R.style.CustomWeek
                     setDate(selectedDate.timeInMillis)
