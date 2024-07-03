@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -38,10 +39,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.week1.data.DateHistory
 import java.time.LocalDate
+import java.util.Calendar
 import kotlin.random.Random
 
 @Composable
-fun CalendarScreen() {
+fun CalendarScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     var showDialog by remember { mutableStateOf(false) }
     var refreshCalendar by remember { mutableStateOf(false) }
@@ -59,6 +61,7 @@ fun CalendarScreen() {
     val gradientColors = listOf(Cyan, MaterialTheme.colorScheme.primary, Color(0xFF7F00FF))
     val jsonString = readJsonFileFromInternalStorage(context, "exerciseHistory.json")
     val exerciseHistory: DateHistory = parseJsonToDateHistory(jsonString)
+
     val currentDate: LocalDate = LocalDate.now()
     var yearState by remember { mutableIntStateOf(currentDate.year) }
     var monthState by remember { mutableIntStateOf(currentDate.monthValue) }
@@ -86,7 +89,9 @@ fun CalendarScreen() {
         )
     }
     Column(
-        modifier = Modifier.padding(5.dp),
+        modifier = modifier
+            .padding(5.dp)
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween,
 
@@ -96,9 +101,13 @@ fun CalendarScreen() {
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
             style = TextStyle(
-                shadow = Shadow(color = MaterialTheme.colorScheme.primary, offset = Offset(3.0f, 4.0f), blurRadius = 1f)
+                shadow = Shadow(
+                    color = MaterialTheme.colorScheme.surface,
+                    offset = Offset(3.0f, 4.0f),
+                    blurRadius = 1f
+                )
             ),
-            color = MaterialTheme.colorScheme.secondary,
+            color = Color.White,
         )
         Spacer(modifier = Modifier.height(12.dp))
         HeatmapCalendar()
@@ -152,6 +161,7 @@ fun CalendarScreen() {
 fun ExerciseTimeDialog(onDismiss: () -> Unit, onSave: (Int, Int, Int, Int) -> Unit) {
     var context = LocalContext.current
     val dialogView = LayoutInflater.from(context).inflate(R.layout.exercise_time_dialog, null)
+
     val alertDialog = AlertDialog.Builder(context)
         .setView(dialogView)
         .setOnDismissListener { onDismiss() }
@@ -169,20 +179,39 @@ fun ExerciseTimeDialog(onDismiss: () -> Unit, onSave: (Int, Int, Int, Int) -> Un
     dialogView.findViewById<android.widget.Button>(R.id.successButton).setOnClickListener {
         val editTime = dialogView.findViewById<EditText>(R.id.editTime)
         val exerciseTime = editTime.text.toString().toIntOrNull()
-        if (exerciseTime != null) {
+        if (exerciseTime == null) {
+            Toast.makeText(
+                context,
+                "시간을 입력해주세요!",
+                Toast.LENGTH_SHORT
+            ).show()
+        } else {
             val calendar = java.util.Calendar.getInstance().apply {
                 timeInMillis = selectedDate
             }
-            val year = calendar.get(java.util.Calendar.YEAR)
-            val month = calendar.get(java.util.Calendar.MONTH) + 1 // Months are 0-based
-            val day = calendar.get(java.util.Calendar.DAY_OF_MONTH)
+            val currentDate: LocalDate = LocalDate.now()
+            if (calendar.get(Calendar.DAY_OF_YEAR) > currentDate.dayOfYear) {
+                // Show AlertDialog for future date
+                AlertDialog.Builder(context)
+                    .setTitle("알림")
+                    .setMessage("운동은 미리 기록할 수 없어요.")
+                    .setPositiveButton("확인") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
+            } else {
 
-            onSave(year, month, day, exerciseTime)
-            Toast.makeText(
-                context,
-                "성공적으로 저장되었습니다.",
-                Toast.LENGTH_SHORT
-            ).show()
+                val year = calendar.get(java.util.Calendar.YEAR)
+                val month = calendar.get(java.util.Calendar.MONTH) + 1 // Months are 0-based
+                val day = calendar.get(java.util.Calendar.DAY_OF_MONTH)
+
+                onSave(year, month, day, exerciseTime)
+                Toast.makeText(
+                    context,
+                    "성공적으로 저장되었습니다.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
         // Process the input values (e.g., save them or use them in the app)
         alertDialog.dismiss()
