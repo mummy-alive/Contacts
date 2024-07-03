@@ -3,19 +3,28 @@ package com.example.week1
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -37,40 +46,116 @@ data class Photo(
     @StringRes val addressId: Int,
 )
 
-val photos = listOf(
+val sports = listOf("모두", "근력 운동", "클라이밍", "달리기", "수영", "필라테스")
+
+val photos1 = listOf(
     Photo(R.drawable.reborn, R.string.photo_name_1, R.string.address_1),
-    Photo(R.drawable.sejong, R.string.photo_name_2, R.string.address_1),
-    Photo(R.drawable.areum, R.string.photo_name_3, R.string.address_1),
-    Photo(R.drawable.plana, R.string.photo_name_4, R.string.address_1),
+    Photo(R.drawable.sejong, R.string.photo_name_2, R.string.address_1)
+)
+
+val photos2 = listOf(
     Photo(R.drawable.thebody, R.string.photo_name_5, R.string.address_1),
     Photo(R.drawable.auditorium, R.string.photo_name_6, R.string.address_1),
-    Photo(R.drawable.sportscomplex, R.string.photo_name_7, R.string.address_1)
 )
+
+val photos3 = listOf(
+    Photo(R.drawable.thebody, R.string.photo_name_5, R.string.address_1),
+    Photo(R.drawable.auditorium, R.string.photo_name_6, R.string.address_1),
+)
+
+val photos4 = listOf(
+    Photo(R.drawable.thebody, R.string.photo_name_5, R.string.address_1),
+    Photo(R.drawable.auditorium, R.string.photo_name_6, R.string.address_1),
+)
+
+val photos5 = listOf(
+    Photo(R.drawable.thebody, R.string.photo_name_5, R.string.address_1),
+    Photo(R.drawable.auditorium, R.string.photo_name_6, R.string.address_1),
+)
+
+val photosList = listOf(
+    photos1,
+    photos2,
+    photos3,
+    photos4,
+    photos5
+)
+
+val photos0 = photosList.flatten().distinct()
+
+val photos = listOf(photos0) + photosList
+
+@Composable
+fun WorkoutScreen(
+    modifier: Modifier = Modifier
+) {
+    var selectedSports by rememberSaveable { mutableIntStateOf(0) }
+
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        modifier = modifier
+            .background(MaterialTheme.colorScheme.background)
+    ) {
+        LazyRow() {
+            itemsIndexed(sports) {i, sport ->
+                SportsItem(
+                    sports = sport
+                ) {
+                    selectedSports = i
+                }
+            }
+        }
+        PhotoScreen (selectedSports, modifier.padding(top = 10.dp))
+    }
+}
+
+@Composable
+fun SportsItem(
+    sports: String,
+    onClick: () -> Unit
+) {
+    Button(
+        modifier = Modifier.height(40.dp).padding(3.dp),
+        colors = ButtonColors(
+            MaterialTheme.colorScheme.secondary,
+            Color.Black,
+            MaterialTheme.colorScheme.secondary,
+            MaterialTheme.colorScheme.secondary
+            ),
+        onClick = onClick) {
+        Text(sports)
+    }
+
+}
 
 @Composable
 fun PhotoScreen(
+    sports: Int,
     modifier: Modifier = Modifier
 ) {
-    val scrollState = rememberLazyListState()
-    var selectedImageId by rememberSaveable { mutableStateOf<Int?>(null) }
-    if (selectedImageId != null) {
-        FullScreenImage(imageId = selectedImageId!!) {
-            selectedImageId = null
-        }
-    } else {
-        LazyColumn(
-            state = scrollState,
-            modifier = modifier
-        ) {
-            itemsIndexed(photos) { _, photo ->
-                DrawPhoto(
-                    photo = photo,
-                    modifier = Modifier
-                        .clickable { selectedImageId = photo.imageResourceId },
+    Column {
+        val scrollState = rememberLazyGridState()
+        var selectedImageId by rememberSaveable { mutableStateOf<Int?>(null) }
+        if (selectedImageId != null) {
+            FullScreenImage(imageId = selectedImageId!!) {
+                selectedImageId = null
+            }
+        } else {
+            LazyVerticalGrid(
+                state = scrollState,
+                columns = GridCells.Fixed(3),
+                modifier = modifier
+            ) {
+                items(photos[sports]) { photo ->
+                    DrawPhoto(
+                        photo = photo,
+                        modifier = Modifier.clickable { selectedImageId = photo.imageResourceId }
                     )
+                }
             }
         }
     }
+
 }
 
 @Composable
@@ -111,17 +196,17 @@ fun DrawPhoto(
         )
         Text(
             text = stringResource(id = photo.nameId),
-            fontSize = 40.sp,
+            fontSize = 14.sp,
             style = TextStyle(
                 color = Color.White
             ),
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .padding(bottom = 40.dp)
+                .padding(bottom = 22.dp)
         )
         Text(
             text = stringResource(id = photo.addressId),
-            fontSize = 20.sp,
+            fontSize = 7.sp,
             style = TextStyle(
                 color = Color.White
             ),
@@ -136,6 +221,6 @@ fun DrawPhoto(
 @Composable
 fun PhotoPreview() {
     Week1Theme {
-        PhotoScreen()
+        WorkoutScreen()
     }
 }
