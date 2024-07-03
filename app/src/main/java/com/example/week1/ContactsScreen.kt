@@ -6,6 +6,7 @@ import android.view.ContextThemeWrapper
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,7 +19,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -61,7 +64,10 @@ val nameToResourceIdMap = mapOf(
 )
 
 var nameToRecentExercise = mapOf(
-    "안유진" to "2024/06/24"
+    "안유진" to "2024/06/24",
+    "공진우" to "2024/07/03",
+    "강해린" to "2024/06/30",
+    "김가을" to "2019/03/14"
 )
 
 @Composable
@@ -72,6 +78,7 @@ fun ContactsScreen(
     val jsonString = readJsonFile(context, "peopleInfo.json")
     val people = parseJsonToPeople(jsonString)
     var selectedPerson by rememberSaveable { mutableStateOf<Person?>(null) }
+    val scrollState = rememberLazyListState()
 
     if (selectedPerson == null) {
         Column(
@@ -84,7 +91,9 @@ fun ContactsScreen(
                 text = "친구",
                 color = Color.White
             )
-            LazyColumn {
+            LazyColumn(
+                state = scrollState
+            ) {
                 itemsIndexed(people) {_, person ->
                     ContactItem(
                         person = person,
@@ -188,7 +197,9 @@ fun RecentExercise(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
+            var dayColor = Color.Gray
             if (recentExercise != "기록 없음") {
+                dayColor = MaterialTheme.colorScheme.tertiary
                 val today = Calendar.getInstance()
                 val recent = stringToCalendar(recentExercise)
                 val diffDays =
@@ -198,10 +209,13 @@ fun RecentExercise(
                 } else {
                     "${diffDays}일 전"
                 }
+                if (diffDays > 10L) {
+                    dayColor = Color.Red
+                }
             }
             Text(
                 text = varRecentExercise,
-                color = MaterialTheme.colorScheme.tertiary
+                color = dayColor
             )
         }
     }
@@ -255,15 +269,42 @@ fun ShowCalendar(
                 }
             }
         )
-        Button(
-            onClick = {
-                date = "기록 없음"
-                onClick(date)
-            },
-            modifier = Modifier
-                .padding(top = 16.dp)
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "X")
+            Button(
+                onClick = {
+                    date = calendarToString(Calendar.getInstance())
+                    onClick(date)
+                },
+                colors = ButtonColors(
+                    MaterialTheme.colorScheme.secondary,
+                    Color.Black,
+                    MaterialTheme.colorScheme.secondary,
+                    MaterialTheme.colorScheme.secondary
+                ),
+                modifier = Modifier
+                    .padding(top = 16.dp)
+            ) {
+                Text(text = "오늘")
+            }
+            Button(
+                onClick = {
+                    date = "기록 없음"
+                    onClick(date)
+                },
+                colors = ButtonColors(
+                    MaterialTheme.colorScheme.secondary,
+                    Color.Black,
+                    MaterialTheme.colorScheme.secondary,
+                    MaterialTheme.colorScheme.secondary
+                ),
+                modifier = Modifier
+                    .padding(top = 16.dp)
+            ) {
+                Text(text = "지우기")
+            }
         }
     }
 }
@@ -273,6 +314,13 @@ fun stringToCalendar(date: String): Calendar {
     val set = Calendar.getInstance()
     set.set(parts[0].toInt(), parts[1].toInt() - 1, parts[2].toInt())
     return set
+}
+
+fun calendarToString(date: Calendar): String {
+    val year = date.get(Calendar.YEAR)
+    val month = date.get(Calendar.MONTH) + 1
+    val day = date.get(Calendar.DAY_OF_MONTH)
+    return "$year/$month/$day"
 }
 
 @Preview(showBackground = true)
