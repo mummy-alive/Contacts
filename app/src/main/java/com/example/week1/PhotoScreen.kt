@@ -16,8 +16,13 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -42,7 +47,7 @@ import com.example.week1.data.Photo
 import com.example.week1.data.photos
 import com.example.week1.ui.theme.Week1Theme
 
-val sports = listOf("모두", "헬스", "클라이밍", "러닝", "수영", "복싱","필라테스")
+val sports = listOf("모두", "헬스", "클라이밍", "러닝", "수영", "복싱", "필라테스")
 
 @Composable
 fun WorkoutScreen(
@@ -74,7 +79,9 @@ fun SportsItem(
     onClick: () -> Unit
 ) {
     Button(
-        modifier = Modifier.height(40.dp).padding(3.dp),
+        modifier = Modifier
+            .height(40.dp)
+            .padding(3.dp),
         colors = ButtonColors(
             MaterialTheme.colorScheme.secondary,
             Color.Black,
@@ -134,8 +141,24 @@ fun FullScreenImage(
             modifier = Modifier
                 .fillMaxWidth()
         )
-        Button(onClick = onClick) {
-            Text(text = "Back")
+        Card(
+            colors = CardColors(
+                MaterialTheme.colorScheme.secondary,
+                MaterialTheme.colorScheme.secondary,
+                MaterialTheme.colorScheme.secondary,
+                MaterialTheme.colorScheme.secondary,
+                ),
+            onClick = onClick
+        ) {
+            Box(
+                contentAlignment = Alignment.Center,
+            ) {
+                Icon(
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = "Back",
+                    tint = Color.Black
+                )
+            }
         }
     }
 }
@@ -169,7 +192,10 @@ fun DrawPhoto(
                     val borderSize = 4.dp.toPx()
                     drawRect(
                         color = Color.Black,
-                        size = size.copy(width = size.width + borderSize, height = size.height + borderSize),
+                        size = size.copy(
+                            width = size.width + borderSize,
+                            height = size.height + borderSize
+                        ),
                         topLeft = Offset(-borderSize / 2, -borderSize / 2)
                     )
                 },
@@ -187,7 +213,10 @@ fun DrawPhoto(
                     val borderSize = 4.dp.toPx()
                     drawRect(
                         color = Color.Black,
-                        size = size.copy(width = size.width + borderSize, height = size.height + borderSize),
+                        size = size.copy(
+                            width = size.width + borderSize,
+                            height = size.height + borderSize
+                        ),
                         topLeft = Offset(-borderSize / 2, -borderSize / 2)
                     )
                 },
