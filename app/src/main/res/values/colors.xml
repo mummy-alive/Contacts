@@ -7,11 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-<<<<<<< HEAD
     <color name="primary">#2F56D4</color>
-=======
-    <color name="primary">#2F56D4</color>>
->>>>>>> 35a05481362796d31ab9ed1e168166cbd4f34431
     <color name="secondary">#41C3E4</color>
     <color name="tertiary">#43CB1F</color>
     <color name="surface">#1C1C1E</color>
