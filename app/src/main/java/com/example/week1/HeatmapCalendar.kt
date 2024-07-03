@@ -69,6 +69,5 @@ fun DayBox(history: History, max: Int = 255, boxSize: Int, boxPad: Int, isToday:
                         alpha = max(0.02f, ratio)
                     )
             )
-        //.alpha(ratio)
     )
 }

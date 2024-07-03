@@ -87,6 +87,7 @@ fun CalendarScreen() {
         verticalArrangement = Arrangement.SpaceBetween,
 
         ) {
+        Text(text="나의 운동기록")
         HeatmapCalendar()
         Spacer(modifier = Modifier.height(16.dp))
         Text(
