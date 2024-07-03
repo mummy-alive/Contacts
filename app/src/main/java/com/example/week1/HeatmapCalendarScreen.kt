@@ -24,14 +24,18 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Cyan
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.week1.data.DateHistory
 import java.time.LocalDate
 import kotlin.random.Random
@@ -87,7 +91,16 @@ fun CalendarScreen() {
         verticalArrangement = Arrangement.SpaceBetween,
 
         ) {
-        Text(text="나의 운동기록")
+        Text(
+            text = "나의 운동기록",
+            fontSize = 30.sp,
+            fontWeight = FontWeight.Bold,
+            style = TextStyle(
+                shadow = Shadow(color = MaterialTheme.colorScheme.primary, offset = Offset(3.0f, 4.0f), blurRadius = 1f)
+            ),
+            color = MaterialTheme.colorScheme.secondary,
+        )
+        Spacer(modifier = Modifier.height(12.dp))
         HeatmapCalendar()
         Spacer(modifier = Modifier.height(16.dp))
         Text(

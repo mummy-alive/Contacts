@@ -9,9 +9,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 
@@ -20,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.platform.LocalContext
 import com.example.week1.data.DateHistory
 import com.example.week1.data.History
+import kotlinx.coroutines.launch
 import java.lang.Float.min
 import java.time.LocalDate
 import kotlin.math.max
@@ -36,8 +40,18 @@ fun HeatmapCalendar() {
        var monthState by remember { mutableIntStateOf(currentDate.monthValue) }
        var dayState by remember { mutableIntStateOf(currentDate.dayOfMonth) }
        var dowState by remember { mutableStateOf(currentDate.dayOfWeek) }*/
-
+    val gridState = rememberLazyGridState()
+    val coroutineScope = rememberCoroutineScope()
+    LaunchedEffect(Unit) {
+        coroutineScope.launch {
+            val todayIndex = max(1, currentDate.dayOfYear - 28)
+            if (todayIndex != -1) {
+                gridState.animateScrollToItem(index=todayIndex)
+            }
+        }
+    }
     LazyHorizontalGrid(
+        state = gridState,
         modifier = Modifier
             .height((35 * 7 + 3 * 6 + 20).dp),
         rows = GridCells.Fixed(7)
@@ -60,14 +74,14 @@ fun DayBox(history: History, max: Int = 255, boxSize: Int, boxPad: Int, isToday:
     Box(
         modifier = Modifier
             .padding(boxPad.dp)
-            .border(2.dp, if(isToday) zeroColor else Color.Transparent, RoundedCornerShape(25))
+            .border(2.dp, if (isToday) zeroColor else Color.Transparent, RoundedCornerShape(25))
             .clip(shape = RoundedCornerShape(25))
             .size(boxSize.dp, boxSize.dp)
             .aspectRatio(1.0f)
             .background(
                 if (history.exercise == 0) zeroColor.copy(alpha = 0.02f) else targetColor.copy(
-                        alpha = max(0.02f, ratio)
-                    )
+                    alpha = max(0.02f, ratio)
+                )
             )
     )
 }
