@@ -82,7 +82,7 @@ fun OnboardingScreen(
 fun TabScreen(
 ) {
     var tabIndex by rememberSaveable { mutableIntStateOf(0) }
-    val tabs = listOf("Contacts", "Photo", "Calendar")
+    val tabs = listOf("친구야", "여기서", "운동하자")
 
     Column{
         when (tabIndex) {
@@ -91,7 +91,7 @@ fun TabScreen(
                 .fillMaxSize()
                 .weight(1f)
             )
-            1 -> PhotoScreen(
+            1 -> WorkoutScreen(
                 modifier = Modifier
                 .fillMaxSize()
                 .weight(1f)
