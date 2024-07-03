@@ -123,7 +123,7 @@ fun CalendarScreen(modifier: Modifier = Modifier) {
             text = ("최고 연속 운동일수: ${maxSteadyDay}일"),
             color = MaterialTheme.colorScheme.secondary,
         )
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(18.dp))
         Text(
             text = quotations[(0..quotations.size - 1).random()],
             fontStyle = FontStyle.Italic,
@@ -133,7 +133,7 @@ fun CalendarScreen(modifier: Modifier = Modifier) {
             ),
             color = MaterialTheme.colorScheme.primary,
         )
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(10.dp))
 
         Button(
             onClick = { showDialog = true },
