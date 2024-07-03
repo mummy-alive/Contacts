@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -75,6 +76,7 @@ fun ContactsScreen(
     val jsonString = readJsonFile(context, "peopleInfo.json")
     val people = parseJsonToPeople(jsonString)
     var selectedPerson by rememberSaveable { mutableStateOf<Person?>(null) }
+    val scrollState = rememberLazyListState()
 
     if (selectedPerson == null) {
         Column(
@@ -87,7 +89,9 @@ fun ContactsScreen(
                 text = "친구",
                 color = Color.White
             )
-            LazyColumn {
+            LazyColumn(
+                state = scrollState
+            ) {
                 itemsIndexed(people) {_, person ->
                     ContactItem(
                         person = person,
@@ -271,6 +275,7 @@ fun ShowCalendar(
             modifier = Modifier
                 .padding(top = 16.dp)
         ) {
+            /*TODO: Add Today button*/
             Text(text = "X")
         }
     }
