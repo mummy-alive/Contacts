@@ -6,6 +6,7 @@ import android.view.ContextThemeWrapper
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,6 +21,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -267,16 +269,42 @@ fun ShowCalendar(
                 }
             }
         )
-        Button(
-            onClick = {
-                date = "기록 없음"
-                onClick(date)
-            },
-            modifier = Modifier
-                .padding(top = 16.dp)
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            modifier = Modifier.fillMaxWidth()
         ) {
-            /*TODO: Add Today button*/
-            Text(text = "X")
+            Button(
+                onClick = {
+                    date = calendarToString(Calendar.getInstance())
+                    onClick(date)
+                },
+                colors = ButtonColors(
+                    MaterialTheme.colorScheme.secondary,
+                    Color.Black,
+                    MaterialTheme.colorScheme.secondary,
+                    MaterialTheme.colorScheme.secondary
+                ),
+                modifier = Modifier
+                    .padding(top = 16.dp)
+            ) {
+                Text(text = "오늘")
+            }
+            Button(
+                onClick = {
+                    date = "기록 없음"
+                    onClick(date)
+                },
+                colors = ButtonColors(
+                    MaterialTheme.colorScheme.secondary,
+                    Color.Black,
+                    MaterialTheme.colorScheme.secondary,
+                    MaterialTheme.colorScheme.secondary
+                ),
+                modifier = Modifier
+                    .padding(top = 16.dp)
+            ) {
+                Text(text = "지우기")
+            }
         }
     }
 }
@@ -286,6 +314,13 @@ fun stringToCalendar(date: String): Calendar {
     val set = Calendar.getInstance()
     set.set(parts[0].toInt(), parts[1].toInt() - 1, parts[2].toInt())
     return set
+}
+
+fun calendarToString(date: Calendar): String {
+    val year = date.get(Calendar.YEAR)
+    val month = date.get(Calendar.MONTH) + 1
+    val day = date.get(Calendar.DAY_OF_MONTH)
+    return "$year/$month/$day"
 }
 
 @Preview(showBackground = true)
