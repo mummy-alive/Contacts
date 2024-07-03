@@ -1,11 +1,46 @@
 <resources>
     <string name="app_name">GunGang</string>
+
+    <string name="photo_name_0">바이에스필라테스 어은점</string>
     <string name="photo_name_1">리본휘트니스</string>
     <string name="photo_name_2">세종관</string>
     <string name="photo_name_3">아름관</string>
     <string name="photo_name_4">플랜에이피트니스</string>
-    <string name="photo_name_5">더바디짐</string>
+    <string name="photo_name_5">더 바디짐</string>
     <string name="photo_name_6">대강당</string>
     <string name="photo_name_7">스포츠컴플렉스</string>
+    <string name="photo_name_8">클라이밍짐리드 충대점</string>
+    <string name="photo_name_9">베이스캠프 볼더스팟 클라이밍 둔산점</string>
+    <string name="photo_name_10">베이스캠프 볼더스팟 클라이밍 유성점</string>
+    <string name="photo_name_11">어웨이크클라이밍 타임월드점</string>
+    <string name="photo_name_12">갑천</string>
+    <string name="photo_name_13">문재엄헬스</string>
+    <string name="photo_name_14">카이스트 더쎄짐 크로스핏</string>
+    <string name="photo_name_15">뉴그린 수영장</string>
+    <string name="photo_name_16">사이언스수영장</string>
+    <string name="photo_name_17">성 킥복싱</string>
+    <string name="photo_name_18">더블플러스복싱클럽</string>
+    <string name="photo_name_19">카이스트</string>
+
+    <string name="address_0">대전 유성구 어은로58번길 2 5층</string>
     <string name="address_1">대전광역시 유성구 어은로 57 한빛프라자 5층</string>
+    <string name="address_2">대전 유성구 대학로 291 한국과학기술원 E8</string>
+    <string name="address_3">대전 유성구 대학로 291 한국과학기술원 N19</string>
+    <string name="address_4">대전 유성구 대학로151번길 25 2층</string>
+    <string name="address_5">대전 유성구 대학로155번길 21</string>
+    <string name="address_6">대전 유성구 대학로 291 한국과학기술원 E15</string>
+    <string name="address_7">대전 유성구 대학로 291 한국과학기술원 N3</string>
+    <string name="address_8">대전 유성구 대학로76번안길 62</string>
+    <string name="address_9">대전 서구 대덕대로 243 3층</string>
+    <string name="address_10">대전 유성구 온천로 52 4층</string>
+    <string name="address_11">대전 서구 둔산로 18 향촌월드프라자 10층</string>
+    <string name="address_12">대전 유성구 구성동</string>
+    <string name="address_13">대전 유성구 어은로58번길 14</string>
+    <string name="address_14">대전 유성구 어은로 46 B1</string>
+    <string name="address_15">대전 서구 청사로 128 1층 뉴그린수영장</string>
+    <string name="address_16">대전 유성구 대덕대로 581</string>
+    <string name="address_17">대전 유성구 대학로 175–1 2층</string>
+    <string name="address_18">대전 유성구 어은로48번길 5</string>
+    <string name="address_19">대전 유성구 대학로 291</string>
+
 </resources>
