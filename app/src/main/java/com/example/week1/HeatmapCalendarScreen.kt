@@ -41,7 +41,9 @@ import java.time.LocalDate
 import kotlin.random.Random
 
 @Composable
-fun CalendarScreen() {
+fun CalendarScreen(
+    modifier: Modifier = Modifier
+) {
     val context = LocalContext.current
     var showDialog by remember { mutableStateOf(false) }
     var refreshCalendar by remember { mutableStateOf(false) }
@@ -86,7 +88,7 @@ fun CalendarScreen() {
         )
     }
     Column(
-        modifier = Modifier.padding(5.dp),
+        modifier = modifier.padding(5.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween,
 
