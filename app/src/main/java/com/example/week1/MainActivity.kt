@@ -146,14 +146,16 @@ fun TabScreen(
         Icons.Default.LocationOn,
         rememberDumbell()
     )
-    Column {
+    Column(modifier = Modifier.fillMaxSize()){
+
         when (tabIndex) {
             0 -> ContactsScreen(modifier = Modifier
                 .fillMaxSize()
                 .weight(1f))
             1 -> WorkoutScreen(modifier = Modifier
                 .fillMaxSize()
-                .weight(1f))
+                .weight(1f)
+            )
             2 -> CalendarScreen(modifier = Modifier
                 .fillMaxSize()
                 .weight(1f))
