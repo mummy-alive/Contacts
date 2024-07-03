@@ -61,7 +61,10 @@ val nameToResourceIdMap = mapOf(
 )
 
 var nameToRecentExercise = mapOf(
-    "안유진" to "2024/06/24"
+    "안유진" to "2024/06/24",
+    "공진우" to "2024/07/03",
+    "강해린" to "2024/06/30",
+    "김가을" to "2019/03/14"
 )
 
 @Composable
@@ -188,7 +191,9 @@ fun RecentExercise(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
         ) {
+            var dayColor = Color.Gray
             if (recentExercise != "기록 없음") {
+                dayColor = MaterialTheme.colorScheme.tertiary
                 val today = Calendar.getInstance()
                 val recent = stringToCalendar(recentExercise)
                 val diffDays =
@@ -198,10 +203,13 @@ fun RecentExercise(
                 } else {
                     "${diffDays}일 전"
                 }
+                if (diffDays > 10L) {
+                    dayColor = Color.Red
+                }
             }
             Text(
                 text = varRecentExercise,
-                color = MaterialTheme.colorScheme.tertiary
+                color = dayColor
             )
         }
     }
