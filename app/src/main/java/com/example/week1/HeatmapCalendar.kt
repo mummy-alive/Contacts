@@ -46,7 +46,7 @@ fun HeatmapCalendar() {
         coroutineScope.launch {
             val todayIndex = max(1, currentDate.dayOfYear - 28)
             if (todayIndex != -1) {
-                gridState.animateScrollToItem(index=todayIndex)
+                gridState.animateScrollToItem(index = todayIndex)
             }
         }
     }

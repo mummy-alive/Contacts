@@ -39,6 +39,7 @@
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
+        android:backgroundTint="@color/secondary"
         android:fontFamily="@font/hahmlet_light"
         android:gravity="center"
         android:hint="예: 60 (분)"
@@ -58,11 +59,11 @@
         android:background="@color/border"
         android:fontFamily="@font/hahmlet_regular"
         android:text="취소"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/successButton"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTime"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/editTime" />
 
     <Button
         android:id="@+id/successButton"
@@ -73,10 +74,10 @@
         android:background="@color/secondary"
         android:fontFamily="@font/hahmlet_regular"
         android:text="확인"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/declineButton"
         app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintTop_toBottomOf="@id/editTime"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toEndOf="@id/declineButton"
+        app:layout_constraintTop_toBottomOf="@id/editTime" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
