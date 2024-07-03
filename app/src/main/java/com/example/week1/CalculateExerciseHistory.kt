@@ -45,7 +45,10 @@ fun ThisWeekExercise(
             exerciseHistory[i].day == day
         ) todayIdx = i
     }
-    for (i: Int in 1..dow)
-        cnt += exerciseHistory[todayIdx - i + 1].exercise
+    for(i: Int in 1..dow){
+        if(todayIdx-i+1 >=0){
+            cnt += exerciseHistory[todayIdx-i+1].exercise
+        }
+    }
     return cnt
 }
