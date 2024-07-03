@@ -187,3 +187,6 @@ val alertDialog = AlertDialog.Builder(context)
 - 저장된 운동 시간 데이터를 기반으로 이번주 누적 운동시간, 이번달 누적 운동시간, 최고 연속 운동일수를 계산하여 출력합니다.
 - 새로운 데이터 저장 시 수정된 기록은 바로 화면에 반영됩니다.
 - 랜덤으로 출력되는 동기부여 명언을 보며 운동 슬럼프를 극복할 수 있습니다💪
+
+# APK File
+https://drive.google.com/file/d/1OJokE3yk0g5lxiVd6s-4RQ8Nr6UMpfPY/view?usp=drive_link
