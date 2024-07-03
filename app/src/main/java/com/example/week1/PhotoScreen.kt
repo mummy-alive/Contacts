@@ -1,7 +1,5 @@
 package com.example.week1
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -30,6 +28,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -38,52 +38,11 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.week1.data.Photo
+import com.example.week1.data.photos
 import com.example.week1.ui.theme.Week1Theme
 
-data class Photo(
-    @DrawableRes val imageResourceId: Int,
-    @StringRes val nameId: Int,
-    @StringRes val addressId: Int,
-)
-
-val sports = listOf("모두", "근력 운동", "클라이밍", "달리기", "수영", "필라테스")
-
-val photos1 = listOf(
-    Photo(R.drawable.reborn, R.string.photo_name_1, R.string.address_1),
-    Photo(R.drawable.sejong, R.string.photo_name_2, R.string.address_1)
-)
-
-val photos2 = listOf(
-    Photo(R.drawable.thebody, R.string.photo_name_5, R.string.address_1),
-    Photo(R.drawable.auditorium, R.string.photo_name_6, R.string.address_1),
-)
-
-val photos3 = listOf(
-    Photo(R.drawable.thebody, R.string.photo_name_5, R.string.address_1),
-    Photo(R.drawable.auditorium, R.string.photo_name_6, R.string.address_1),
-)
-
-val photos4 = listOf(
-    Photo(R.drawable.thebody, R.string.photo_name_5, R.string.address_1),
-    Photo(R.drawable.auditorium, R.string.photo_name_6, R.string.address_1),
-)
-
-val photos5 = listOf(
-    Photo(R.drawable.thebody, R.string.photo_name_5, R.string.address_1),
-    Photo(R.drawable.auditorium, R.string.photo_name_6, R.string.address_1),
-)
-
-val photosList = listOf(
-    photos1,
-    photos2,
-    photos3,
-    photos4,
-    photos5
-)
-
-val photos0 = photosList.flatten().distinct()
-
-val photos = listOf(photos0) + photosList
+val sports = listOf("모두", "헬스", "클라이밍", "러닝", "수영", "복싱","필라테스")
 
 @Composable
 fun WorkoutScreen(
@@ -96,7 +55,7 @@ fun WorkoutScreen(
         modifier = modifier
             .background(MaterialTheme.colorScheme.background)
     ) {
-        LazyRow() {
+        LazyRow {
             itemsIndexed(sports) {i, sport ->
                 SportsItem(
                     sports = sport
@@ -105,7 +64,7 @@ fun WorkoutScreen(
                 }
             }
         }
-        PhotoScreen (selectedSports, modifier.padding(top = 10.dp))
+        PhotoScreen (selectedSports, modifier)
     }
 }
 
@@ -143,13 +102,14 @@ fun PhotoScreen(
         } else {
             LazyVerticalGrid(
                 state = scrollState,
-                columns = GridCells.Fixed(3),
+                columns = GridCells.Fixed(2),
                 modifier = modifier
             ) {
                 items(photos[sports]) { photo ->
                     DrawPhoto(
                         photo = photo,
-                        modifier = Modifier.clickable { selectedImageId = photo.imageResourceId }
+                        modifier = Modifier
+                            .clickable { selectedImageId = photo.imageResourceId }
                     )
                 }
             }
@@ -185,7 +145,9 @@ fun DrawPhoto(
     photo: Photo,
     modifier: Modifier = Modifier
 ) {
-    Box {
+    Box(
+        modifier = modifier
+    ) {
         Image(
             painter = painterResource(id = photo.imageResourceId),
             contentDescription = null,
@@ -196,23 +158,39 @@ fun DrawPhoto(
         )
         Text(
             text = stringResource(id = photo.nameId),
-            fontSize = 14.sp,
+            fontSize = 11.sp,
             style = TextStyle(
                 color = Color.White
             ),
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(bottom = 22.dp)
+                .drawBehind {
+                    val borderSize = 4.dp.toPx()
+                    drawRect(
+                        color = Color.Black,
+                        size = size.copy(width = size.width + borderSize, height = size.height + borderSize),
+                        topLeft = Offset(-borderSize / 2, -borderSize / 2)
+                    )
+                },
         )
         Text(
             text = stringResource(id = photo.addressId),
-            fontSize = 7.sp,
+            fontSize = 9.sp,
             style = TextStyle(
                 color = Color.White
             ),
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .padding(bottom = 15.dp)
+                .padding(bottom = 7.dp)
+                .drawBehind {
+                    val borderSize = 4.dp.toPx()
+                    drawRect(
+                        color = Color.Black,
+                        size = size.copy(width = size.width + borderSize, height = size.height + borderSize),
+                        topLeft = Offset(-borderSize / 2, -borderSize / 2)
+                    )
+                },
         )
     }
 }
