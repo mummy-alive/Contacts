@@ -71,15 +71,16 @@ fun DayBox(history: History, max: Int = 255, boxSize: Int, boxPad: Int, isToday:
     val targetColor = Color(0xFF41C3E4) // Target color
     val ratio = if (max > 0) min(1f, history.exercise.toFloat() / max) else 0f
     val zeroColor = Color(0xFF769BA5)
+    val padColor = Color(0xFF85F168)
     Box(
         modifier = Modifier
             .padding(boxPad.dp)
-            .border(2.dp, if (isToday) zeroColor else Color.Transparent, RoundedCornerShape(25))
+            .border(2.dp, if (isToday) padColor else Color.Transparent, RoundedCornerShape(25))
             .clip(shape = RoundedCornerShape(25))
             .size(boxSize.dp, boxSize.dp)
             .aspectRatio(1.0f)
             .background(
-                if (history.exercise == 0) zeroColor.copy(alpha = 0.02f) else targetColor.copy(
+                if (history.exercise == 0) zeroColor.copy(alpha = 0.10f) else targetColor.copy(
                     alpha = max(0.02f, ratio)
                 )
             )

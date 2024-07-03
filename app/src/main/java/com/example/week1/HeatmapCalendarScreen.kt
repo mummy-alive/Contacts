@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import android.content.Context
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -91,7 +92,8 @@ fun CalendarScreen(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .padding(5.dp)
-            .fillMaxSize(),
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween,
 
@@ -140,6 +142,7 @@ fun CalendarScreen(modifier: Modifier = Modifier) {
         ) {
             Text("운동 시간 기록하기", color = MaterialTheme.colorScheme.background)
         }
+        Spacer(modifier = Modifier.height(20.dp))
     }
     if (showDialog) {
         ExerciseTimeDialog(
