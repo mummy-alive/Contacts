@@ -84,7 +84,7 @@ fun TabScreen(
     var tabIndex by rememberSaveable { mutableIntStateOf(0) }
     val tabs = listOf("친구야", "여기서", "운동하자")
 
-    Column{
+    Column(modifier = Modifier.fillMaxSize()){
         when (tabIndex) {
             0 -> ContactsScreen(
                 modifier = Modifier
@@ -96,7 +96,9 @@ fun TabScreen(
                 .fillMaxSize()
                 .weight(1f)
             )
-            2 -> CalendarScreen()
+            2 -> CalendarScreen(modifier = Modifier
+                .fillMaxSize()
+                .weight(1f))
         }
         TabRow(
             selectedTabIndex = tabIndex,

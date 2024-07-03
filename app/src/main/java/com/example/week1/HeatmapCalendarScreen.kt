@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import android.content.Context
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
@@ -41,7 +42,7 @@ import java.time.LocalDate
 import kotlin.random.Random
 
 @Composable
-fun CalendarScreen() {
+fun CalendarScreen(modifier: Modifier = Modifier) {
     val context = LocalContext.current
     var showDialog by remember { mutableStateOf(false) }
     var refreshCalendar by remember { mutableStateOf(false) }
@@ -86,7 +87,9 @@ fun CalendarScreen() {
         )
     }
     Column(
-        modifier = Modifier.padding(5.dp),
+        modifier = modifier
+            .padding(5.dp)
+            .fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.SpaceBetween,
 
@@ -96,9 +99,9 @@ fun CalendarScreen() {
             fontSize = 30.sp,
             fontWeight = FontWeight.Bold,
             style = TextStyle(
-                shadow = Shadow(color = MaterialTheme.colorScheme.primary, offset = Offset(3.0f, 4.0f), blurRadius = 1f)
+                shadow = Shadow(color = MaterialTheme.colorScheme.surface, offset = Offset(3.0f, 4.0f), blurRadius = 1f)
             ),
-            color = MaterialTheme.colorScheme.secondary,
+            color = Color.White,
         )
         Spacer(modifier = Modifier.height(12.dp))
         HeatmapCalendar()
